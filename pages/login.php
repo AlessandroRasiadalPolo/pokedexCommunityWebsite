@@ -14,9 +14,9 @@
     <h2 class="text">Effettua il login inserendo email e password</h2>
     <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="login-form">
         <label for="" class="label-form">Nome Utente</label>
-        <input type="text" name="username" id="input-Name" class="formInput" required><br>
+        <input type="text" name="username" id="input-Name" class="formInput" required placeholder="pinco Pallino"><br>
         <label for="" class="label-form">Password</label>
-        <input type="password" name="password" id="input-Password" class="formInput" required><br>
+        <input type="password" name="password" id="input-Password" class="formInput" required placeholder="password"><br>
         <input type="submit" value="LOGIN" name="login" class="formInput">
     </form>
     <p id="register-link">Non hai un account? <a href="register.php">Registrati</a></p>

@@ -14,11 +14,11 @@
     <h2 class="text">Effettua il login inserendo email e password</h2>
     <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="login-form">
         <label for="" class="label-form">Nome Utente</label>
-        <input type="text" name="username" id="input-Name" class="formInput" required><br>
+        <input type="text" name="username" id="input-Name" class="formInput" required placeholder="PincoPallino"><br>
         <label for="email" class="label-form">Email</label>
-        <input type="email" name="email" id="input-email" class = "formInput" required>
+        <input type="email" name="email" id="input-email" class = "formInput" required placeholder="Email">
         <label for="" class="label-form">Password</label>
-        <input type="password" name="password" id="input-Password" class="formInput" required><br>
+        <input type="password" name="password" id="input-Password" class="formInput" required placeholder="Password"><br>
         <input type="submit" value="REGISTRATI" name="register" class="formInput">
     </form>
     <p id="register-link">Hai già un account?<a href="login.php">   Login</a></p>
