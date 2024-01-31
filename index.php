@@ -24,16 +24,16 @@
             <?php
 
             if(isset($_COOKIE['username'])){
-                echo '<a href="index.php"><button>Home</button></a>';
+                echo '<a href="index.php"><button class = "headerButton">Home</button></a>';
                 $username = $_COOKIE['username'];
-                echo '<a href="./pages/profile.php"><button>'.$username.'</button></a>';
-                echo '<a href = ""><button>TeamMaker</button></a>';
-                echo '<a href=""><button onclick="deleteCookie(\'username\')">Exit</button></a>';
+                echo '<a href="./pages/profile.php"><button class = "headerButton">'.$username.'</button></a>';
+                echo '<a href = ""><button class = "headerButton">TeamMaker</button></a>';
+                echo '<a href=""><button class = "headerButton" onclick="deleteCookie(\'username\')">Exit</button></a>';
             }
             else{
-                echo '<a href="index.php"><button>Home</button></a>';
-                echo '<a href="./pages/login.php"><button>Login</button></a>';
-                echo '<a href=""><button>Pokedex</button></a>';
+                echo '<a href="index.php"><button class = "headerButton">Home</button></a>';
+                echo '<a href="./pages/login.php"><button class = "headerButton">Login</button></a>';
+                echo '<a href=""><button class = "headerButton">Pokedex</button></a>';
             }
 
             ?>

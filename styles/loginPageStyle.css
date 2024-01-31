@@ -32,14 +32,14 @@ body {
 
 }
 
-.text, .label-form, #register-link {
+.text, .label-form, #register-link, #buttonLogin {
     color: #e67e22; /* Giallo simile a Pikachu */
     text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; /* Ombra di testo nera */
     font-family: 'Pokemon Solid', sans-serif;
     transition: color 0.3s ease;
 
 }
-.text:hover, .label-form:hover, #register-link:hover {
+.text:hover, .label-form:hover, #register-link:hover, #buttonLogin:hover {
     color: red; /* Cambia il colore del testo al passaggio del mouse */
 }
 
@@ -55,6 +55,13 @@ body {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
 
+}
+#buttonLogin{
+    border: 0;
+    font-family: 'Pokemon Solid', sans-serif;
+    width: 100px;
+    background: transparent;
+    cursor: pointer;
 }
 
 
@@ -80,3 +87,4 @@ body {
     border: 2px solid #fff; /* Bordo bianco */
 
 }
+

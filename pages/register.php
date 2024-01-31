@@ -19,7 +19,7 @@
         <input type="email" name="email" id="input-email" class = "formInput" required placeholder="Email">
         <label for="" class="label-form">Password</label>
         <input type="password" name="password" id="input-Password" class="formInput" required placeholder="Password"><br>
-        <input type="submit" value="REGISTRATI" name="register" class="formInput">
+        <input type="submit" value="REGISTRATI" name="register" class="formInput" id = "buttonLogin">
     </form>
     <p id="register-link">Hai già un account?<a href="login.php">   Login</a></p>
 </section>

@@ -1,14 +1,15 @@
 .navId {
+    height: 100px;
     background-color: #e62e00; /* Cambia questo colore con quello che preferisci */
-    padding: 10px; /* Aggiungi spaziatura interna per migliorare l'aspetto */
+    padding: 20px; /* Aggiungi spaziatura interna per migliorare l'aspetto */
 }
-button {
-    background-color: #ff704d
-; /* Cambia questo colore con quello che preferisci */
+.headerButton {
+    background-color: #ff704d;
+    /* Cambia questo colore con quello che preferisci */
     color: white;
     border: none;
-    padding: 8px 16px;
-    margin: 0 5px;
+    margin: 30px 5px;
     text-decoration: none;
     cursor: pointer;
+    padding: 30px;
 }

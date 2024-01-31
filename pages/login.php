@@ -17,7 +17,7 @@
         <input type="text" name="username" id="input-Name" class="formInput" required placeholder="pinco Pallino"><br>
         <label for="" class="label-form">Password</label>
         <input type="password" name="password" id="input-Password" class="formInput" required placeholder="password"><br>
-        <input type="submit" value="LOGIN" name="login" class="formInput">
+        <input type="submit" value="LOGIN" name="login" class="formInput" id = "buttonLogin">
     </form>
     <p id="register-link">Non hai un account? <a href="register.php">Registrati</a></p>
 </section>
