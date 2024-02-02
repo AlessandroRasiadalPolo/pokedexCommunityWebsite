@@ -13,3 +13,14 @@
     cursor: pointer;
     padding: 30px;
 }
+
+.userBadge{
+    border-radius: 25px;
+    width: 500px;
+    border: 1px solid black;
+
+}
+.imgBadge{
+    border: 1px solid black;
+    border-radius: 25px;
+}

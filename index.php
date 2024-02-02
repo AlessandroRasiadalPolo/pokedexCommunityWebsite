@@ -45,6 +45,19 @@
 
 <section>
 
+    <div class = "userBadge">
+        <img src="" alt="" class = "imgBadge">
+        <p>Nome del Team</p>
+        <img src="" alt="" class = "imgBadge">
+        <img src="" alt="" class = "imgBadge">
+        <img src="" alt="" class = "imgBadge">
+        <img src="" alt="" class = "imgBadge">
+        <img src="" alt="" class = "imgBadge">
+        <img src="" alt="" class = "imgBadge">
+
+
+    </div>
+
 </section>
 
 <footer>
