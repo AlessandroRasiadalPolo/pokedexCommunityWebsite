@@ -7,8 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../styles/loginPageStyle.css">
+
+    <script src="../scripts/AudioHendler.js"></script>
 </head>
 <body>
+<audio id = "myAudio">
+    <source src = "../audios/LoginSound.mp3" type="audio/mpeg">
+</audio>
 <section id="body-login">
     <h1 class="text">Benvenuto Allenatore sul pokedex nazionale</h1>
     <h2 class="text">Effettua il login inserendo email e password</h2>
@@ -26,8 +31,6 @@
     <source src="../videos/loginBackground.mp4" type="video/mp4">
 </video>
 
-
-
     <?php
 
     if(isset($_POST['login'])){
@@ -39,7 +42,7 @@
             if($user['username'] == $username && $user['password'] == $password)
             {
                 setcookie("username", $username, time() + 3600, "/");
-                header("Location: ../index.php");
+                echo "<script> login();</script>";
                 exit();
             }
         }
