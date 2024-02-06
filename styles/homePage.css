@@ -1,3 +1,8 @@
+
+body{
+    background: url("../images/indexBackground.jpg") no-repeat;
+    background-size: cover;
+}
 .navId {
     position: fixed;
     width: 100%;
@@ -23,6 +28,7 @@
     border-radius: 25px;
     width: 700px;
     border: 1px solid black;
+    background: white;
 
 }
 .imgBadge{
@@ -64,11 +70,30 @@
 .pokemonAnimation{
 
     position: absolute;
-    width: 500px;
     z-index: 2;
     opacity: 0; /* Inizialmente invisibile */
 
 }
+@media screen and (max-width: 15.6in) {
+    .pokemonAnimation {
+        width: 30px; /* Larghezza per schermi di dimensioni inferiori a 15.6 pollici */
+    }
+}
+
+@media screen and (min-width: 15.7in) and (max-width: 20in) {
+    .pokemonAnimation {
+        width: 450px; /* Larghezza per schermi compresi tra 15.7 e 20 pollici */
+    }
+}
+
+@media screen and (min-width: 20.1in) {
+    .pokemonAnimation {
+        width: 500px; /* Larghezza per schermi superiori a 20 pollici */
+    }
+}
+
+
+
 
 #imgAnimation1-1{
     float:right;
@@ -98,3 +123,6 @@
         transform: translateX(0); /* Posizione finale a destra */
     }
 }
+
+
+

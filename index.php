@@ -30,7 +30,7 @@
                 echo '<a href="index.php"><button class = "headerButton">Home</button></a>';
                 $username = $_COOKIE['username'];
                 echo '<a href="./pages/profile.php"><button class = "headerButton">'.$username.'</button></a>';
-                echo '<a href = ""><button class = "headerButton">TeamMaker</button></a>';
+                echo '<a href = "./pages/teamMaker.php"><button class = "headerButton">TeamMaker</button></a>';
                 echo '<a href=""><button class = "headerButton" onclick="deleteCookie(\'username\')">Exit</button></a>';
             }
             else{
