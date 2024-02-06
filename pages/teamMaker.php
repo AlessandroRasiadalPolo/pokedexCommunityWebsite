@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../styles/teamMaker.css">
+    <script src = "../scripts/DataSaverHandler.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -23,9 +24,7 @@
 
             }
             else{
-                echo '<a href="index.php"><button class = "headerButton">Home</button></a>';
-                echo '<a href="./pages/login.php"><button class = "headerButton">Login</button></a>';
-                echo '<a href=""><button class = "headerButton">Pokedex</button></a>';
+                header("Location: ../index.php");
             }
 
             ?>
