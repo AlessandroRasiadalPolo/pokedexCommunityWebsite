@@ -37,3 +37,9 @@ nav{
 .fa-plus-circle:hover{
     color: red;
 }
+
+.teamDiv{
+    border: 1px solid black;
+    margin: 30px;
+    width: 800px;
+}

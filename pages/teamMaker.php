@@ -39,9 +39,27 @@
 </header>
 
 <section id = "bodyPage">
-
-    <button><i class = "fas fa-plus-circle"></i>New Team</button>
     <h2>I tuoi team</h2>
+    <div class = "teamDiv">
+        <h3>Titolo del team</h3>
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+    </div>
+    <div class = "teamDiv">
+        <h3>Titolo del team</h3>
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+    </div>
+    <button><i class = "fas fa-plus-circle"></i>New Team</button>
+
 </section>
 
 </body>
