@@ -106,7 +106,7 @@
     </div>
 
     <div class = "userBadge">
-        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/155.png"  id = "imgAnimation1-1" class = "pokemonAnimation" alt="">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/157.png"  id = "imgAnimation1-1" class = "pokemonAnimation" alt="">
         <img src="./images/typhlosion.png"  id = "imgAnimation2-1" class = "pokemonAnimation" alt ="">
         <h2>Trainer's Card</h2>
         <img src="images/icon.png" alt="" class = "imgBadge">

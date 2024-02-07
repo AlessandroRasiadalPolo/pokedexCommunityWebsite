@@ -6,12 +6,18 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../styles/teamMaker.css">
+    <!-- Link per Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link per Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src = "../scripts/DataSaverHandler.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>Document</title>
 </head>
 <body>
 <header>
-    <div class = "navId">
         <nav>
             <?php
 
@@ -30,16 +36,12 @@
             ?>
 
         </nav>
-    </div>
 </header>
+
 <section id = "bodyPage">
-    <!-- Tabella che mostra tutti i team già presenti per modificarli o crearne di nuovi-->
-    <table id = "TeamTable">
-        <th>Nome Team</th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </table>
+
+    <button><i class = "fas fa-plus-circle"></i>New Team</button>
+    <h2>I tuoi team</h2>
 </section>
 
 </body>
