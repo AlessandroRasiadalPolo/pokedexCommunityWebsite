@@ -22,3 +22,13 @@ nav{
     cursor: pointer;
     padding: 30px;
 }
+
+#bodyPage{
+    width: 100%;
+    height: 100vh;
+}
+
+#teamTable{
+    width: 100%;
+    margin-top: 230px;
+}

@@ -31,8 +31,16 @@
 
         </nav>
     </div>
-
 </header>
+<section id = "bodyPage">
+    <!-- Tabella che mostra tutti i team già presenti per modificarli o crearne di nuovi-->
+    <table id = "TeamTable">
+        <th>Nome Team</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </table>
+</section>
 
 </body>
 </html>
