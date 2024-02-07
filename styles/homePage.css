@@ -2,6 +2,7 @@
 body{
     background: url("../images/indexBackground.jpg") no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 body,header{
     margin: 0;
@@ -29,12 +30,14 @@ nav{
 }
 
 .userBadge{
+    display: block;
     padding: 20px;
-    margin: 300px;
+    margin-top: 300px;
     border-radius: 25px;
     width: 700px;
     border: 1px solid black;
     background: white;
+    clear: both;
 
 }
 .imgBadge{
@@ -56,6 +59,7 @@ nav{
 
 #bodyPage {
     display: flex; /* Imposta il layout flessibile */
+    flex-direction: column;
     align-items: center; /* Centra gli elementi lungo l'asse trasversale (verticale) */
     justify-content: center; /* Centra gli elementi lungo l'asse principale (orizzontale) */
 }

@@ -37,10 +37,10 @@
 </header>
 
 <section id = "bodyPage">
-    <img src="./images/steelex.png"  id = "imgAnimation1-1" class = "pokemonAnimation" alt="">
-    <img src="./images/typhlosion.png"  id = "imgAnimation2-1" class = "pokemonAnimation" alt ="">
 
     <div class = "userBadge">
+        <img src="./images/steelex.png"  id = "imgAnimation1-1" class = "pokemonAnimation" alt="">
+        <img src="./images/typhlosion.png"  id = "imgAnimation2-1" class = "pokemonAnimation" alt ="">
         <h2>Trainer's Card</h2>
         <img src="images/icon.png" alt="" class = "imgBadge">
         <h3>Team Name</h3>
@@ -104,6 +104,72 @@
 
 
     </div>
+
+    <div class = "userBadge">
+        <h2>Trainer's Card</h2>
+        <img src="images/icon.png" alt="" class = "imgBadge">
+        <h3>Team Name</h3>
+        <div class = "teamDiv">
+            <div class = "pokemonDescription">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "imgBadge">
+                <div>
+                    <p>Mossa 1</p>
+                    <p>Mossa2</p>
+                    <p>Mossa 3</p>
+                    <p>Mossa4</p>
+                </div>
+            </div>
+            <div class = "pokemonDescription">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "imgBadge">
+                <div>
+                    <p>Mossa 1</p>
+                    <p>Mossa2</p>
+                    <p>Mossa 3</p>
+                    <p>Mossa4</p>
+                </div>
+            </div>
+            <div class = "pokemonDescription">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/annihilape.png"" alt="" class = "imgBadge">
+                <div>
+                    <p>Mossa 1</p>
+                    <p>Mossa2</p>
+                    <p>Mossa 3</p>
+                    <p>Mossa4</p>
+                </div>
+            </div>
+            <div class = "pokemonDescription">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "imgBadge">
+                <div>
+                    <p>Mossa 1</p>
+                    <p>Mossa2</p>
+                    <p>Mossa 3</p>
+                    <p>Mossa4</p>
+                </div>
+            </div>
+            <div class = "pokemonDescription">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "imgBadge">
+                <div>
+                    <p>Mossa 1</p>
+                    <p>Mossa2</p>
+                    <p>Mossa 3</p>
+                    <p>Mossa4</p>
+                </div>
+            </div>
+            <div class = "pokemonDescription">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "imgBadge">
+                <div>
+                    <p>Mossa 1</p>
+                    <p>Mossa2</p>
+                    <p>Mossa 3</p>
+                    <p>Mossa4</p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
 
 
 </section>
