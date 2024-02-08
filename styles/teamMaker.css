@@ -39,7 +39,46 @@ nav{
 }
 
 .teamDiv{
+    display: block;
     border: 1px solid black;
     margin: 30px;
     width: 800px;
 }
+
+.pokemonContainer {
+    position: relative;
+    width: 80px; /* Larghezza desiderata per il contenitore del Pokémon */
+    height: 80px; /* Altezza desiderata per il contenitore del Pokémon */
+}
+
+.pokeball {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pokemon {
+    position: absolute;
+    /* Utilizza le coordinate del punto di ancoraggio per posizionare il Pokémon */
+    bottom: 20px;
+    left: 2px;
+    width: 70px; /* Larghezza desiderata per il Pokémon */
+    z-index: 1; /* Assicura che il Pokémon sia sopra la Pokéball */
+}
+
+@media(max-width: 90px)
+{
+    /* Regole di stile per le pokeball*/
+}
+
+
+.members{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
