@@ -39,7 +39,7 @@
 <section id = "bodyPage">
 
     <div class = "userBadge">
-        <img src="./images/steelex.png"  id = "imgAnimation1-1" class = "pokemonAnimation" alt="">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/792 status.png"  id = "imgAnimation1-1" class = "pokemonAnimation" alt="">
         <img src="./images/typhlosion.png"  id = "imgAnimation2-1" class = "pokemonAnimation" alt ="">
         <h2>Trainer's Card</h2>
         <img src="images/icon.png" alt="" class = "imgBadge">
@@ -113,7 +113,7 @@
         <h3>Team Name</h3>
         <div class = "teamDiv">
             <div class = "pokemonDescription">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "imgBadge">
+                <img src="https://www.smogon.com/dex/media/sprites/xy/pikachu-alola.gif" alt="" class = "imgBadge">
                 <div>
                     <p>Mossa 1</p>
                     <p>Mossa2</p>
@@ -122,7 +122,7 @@
                 </div>
             </div>
             <div class = "pokemonDescription">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "imgBadge">
+                <img src="https://www.smogon.com/dex/media/sprites/xy/charizard.gif" alt="" class = "imgBadge">
                 <div>
                     <p>Mossa 1</p>
                     <p>Mossa2</p>
@@ -131,7 +131,7 @@
                 </div>
             </div>
             <div class = "pokemonDescription">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/annihilape.png"" alt="" class = "imgBadge">
+                <img src="https://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif"" alt="" class = "imgBadge">
                 <div>
                     <p>Mossa 1</p>
                     <p>Mossa2</p>
@@ -140,7 +140,7 @@
                 </div>
             </div>
             <div class = "pokemonDescription">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "imgBadge">
+                <img src="https://www.smogon.com/dex/media/sprites/xy/empoleon.gif" alt="" class = "imgBadge">
                 <div>
                     <p>Mossa 1</p>
                     <p>Mossa2</p>
@@ -149,7 +149,7 @@
                 </div>
             </div>
             <div class = "pokemonDescription">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "imgBadge">
+                <img src="https://www.smogon.com/dex/media/sprites/xy/zekrom.gif" alt="" class = "imgBadge">
                 <div>
                     <p>Mossa 1</p>
                     <p>Mossa2</p>
@@ -158,7 +158,7 @@
                 </div>
             </div>
             <div class = "pokemonDescription">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "imgBadge">
+                <img src="https://www.smogon.com/dex/media/sprites/xy/emboar.gif" alt="" class = "imgBadge">
                 <div>
                     <p>Mossa 1</p>
                     <p>Mossa2</p>
