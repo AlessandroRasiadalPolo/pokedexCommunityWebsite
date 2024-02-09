@@ -72,14 +72,34 @@
 
     </div>
     <div class = "teamDiv">
-        <h3>Titolo del team</h3>
+        <h3 class = "teamTitle">Titolo del team</h3>
+        <div class = "members">
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "pokemon">
+            </div>
 
-        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
-        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
-        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
-        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
-        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
-        <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" alt="">
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/charizard.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/brute-bonnet.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/zekrom.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/necrozma.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/pokeballSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/ursaluna.png" alt="" class = "pokemon">
+            </div>
+        </div>
     </div>
     <button><i class = "fas fa-plus-circle"></i>New Team</button>
 
