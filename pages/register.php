@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../styles/registerPage.css">
+    <?php use classes\DB;
+    require'../classes/DB.php'?>
 </head>
 <body>
 <section id="body-login">
@@ -33,7 +35,7 @@
 <?php
 
 if(isset($_POST['register'])){
-    $username = $_POST['username'];
+    /*$username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
 
@@ -52,7 +54,17 @@ if(isset($_POST['register'])){
     $users[] = $newUser;
 
     file_put_contents("../json/utenti.json", json_encode($users, JSON_PRETTY_PRINT));
-    header("Location: login.php");
+    */
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $newUser = array("username" => $username, "password" => $password, "email" => $email);
+
+    if($result = DB::createNewUser($newUser))
+        header("Location: login.php");
+    else
+        echo $result;
+
 }
 
 ?>

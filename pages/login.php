@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../styles/loginPageStyle.css">
 
     <script src="../scripts/AudioHendler.js"></script>
+
+    <?php use classes\DB;
+
+    require '../classes/DB.php'?>
 </head>
 <body>
 <audio id = "myAudio">
@@ -36,7 +40,7 @@
     if(isset($_POST['login'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $users = json_decode(file_get_contents("../json/utenti.json"), true);
+        /*$users = json_decode(file_get_contents("../json/utenti.json"), true);
 
         foreach($users as $user){
             if($user['username'] == $username && $user['password'] == $password)
@@ -45,6 +49,11 @@
                 echo "<script> login();</script>";
                 exit();
             }
+        }
+        */
+        if(DB::loginUser($username, $password) == 0){
+            setcookie("username", $username, time() + 3600, "/");
+            echo "<script> login();</script>";
         }
     }
 
