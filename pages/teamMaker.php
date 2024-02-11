@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../styles/teamMaker.css">
+    <link rel="stylesheet" href="../styles/header.css">
     <!-- Link per Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Link per Font Awesome -->
@@ -18,24 +19,25 @@
 </head>
 <body>
 <header>
-        <nav>
-            <?php
+    <nav>
+        <h1>La sala d'onore della Community</h1>
 
-            if(isset($_COOKIE['username'])){
-                echo '<a href="../index.php"><button class = "headerButton">Home</button></a>';
-                $username = $_COOKIE['username'];
-                echo '<a href="./pages/profile.php"><button class = "headerButton">'.$username.'</button></a>';
-                echo '<a href=""><button class = "headerButton">Pokedex</button></a>';
-                echo '<a href=""><button class = "headerButton" onclick="deleteCookie(\'username\')">Exit</button></a>';
+        <?php
 
-            }
-            else{
-                header("Location: ../index.php");
-            }
+        if(isset($_COOKIE['username'])){
 
-            ?>
+            echo '<a href="../index.php" class = "headerLink"><button class = "headerButton">Home</button></a>';
+            $username = $_COOKIE['username'];
+            echo '<a href="./profile.php" class = "headerLink"><button class = "headerButton">'.$username.'</button></a>';
+            echo '<a href="" class = "headerLink"><button class = "headerButton" onclick="deleteCookie(\'username\')" style = "border: none; float: right; margin-right: 50px">Exit</button></a>';
+        }
+        else{
+            header("Location: ./login.php");
+        }
 
-        </nav>
+        ?>
+
+    </nav>
 </header>
 
 <section id = "bodyPage">

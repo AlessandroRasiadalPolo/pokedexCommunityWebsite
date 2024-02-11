@@ -6,24 +6,7 @@ body,header{
     width: 100%;
     height: 100px;
 }
-nav{
-    position: fixed;
-    width: 100%;
-    height: 150px;
-    z-index: 3;
-    background-color: #e62e00; /* Cambia questo colore con quello che preferisci */
-    padding: 20px; /* Aggiungi spaziatura interna per migliorare l'aspetto */
-}
-.headerButton {
-    background-color: #ff704d;
-    /* Cambia questo colore con quello che preferisci */
-    color: white;
-    border: none;
-    margin: 30px 5px;
-    text-decoration: none;
-    cursor: pointer;
-    padding: 30px;
-}
+
 
 #bodyPage{
     width: 100%;
