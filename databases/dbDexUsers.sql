@@ -110509,7 +110509,7 @@ CREATE TABLE `utente` (
   `Id` varchar(100) NOT NULL,
   Email varchar(150) NOT NULL,
   password varchar(150) NOT NULL,
-  profilePhoto varchar(200) NOT NULL
+  profilePhoto varchar(200)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
