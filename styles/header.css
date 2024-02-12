@@ -5,11 +5,12 @@
 }
 
 h1{
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: white;
     margin-top: 15px;
-    font-size: 2em;
+    font-size: 2.5em;
     justify-content:center;
     text-align:center;
-    color: #fff;
     text-align: center;
 }
 
@@ -17,13 +18,13 @@ nav{
     position: fixed;
     width: 100%;
     z-index: 3;
-    background-color: #d30a40; /* Cambia questo colore con quello che preferisci */
+    background-color: #ff4141; /* Cambia questo colore con quello che preferisci */
 }
 
 .headerButton {
     width: 150px;
     font-weight: bold;
-    background-color: #d30a40;
+    background-color: #ff4141;
     color: white;
     border: none;
     border-top: 1px solid white;

@@ -11,11 +11,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Link per Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <script src = "../scripts/DataSaverHandler.js"></script>
+    <script src="../scripts/DataSaverHandler.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>Document</title>
+    <title>TeamMaker</title>
 </head>
 <body>
 <header>
@@ -24,14 +24,13 @@
 
         <?php
 
-        if(isset($_COOKIE['username'])){
+        if (isset($_COOKIE['username'])) {
 
             echo '<a href="../index.php" class = "headerLink"><button class = "headerButton">Home</button></a>';
             $username = $_COOKIE['username'];
-            echo '<a href="./profile.php" class = "headerLink"><button class = "headerButton">'.$username.'</button></a>';
+            echo '<a href="./profile.php" class = "headerLink"><button class = "headerButton">' . $username . '</button></a>';
             echo '<a href="" class = "headerLink"><button class = "headerButton" onclick="deleteCookie(\'username\')" style = "border: none; float: right; margin-right: 50px">Exit</button></a>';
-        }
-        else{
+        } else {
             header("Location: ./login.php");
         }
 
@@ -40,70 +39,46 @@
     </nav>
 </header>
 
-<section id = "bodyPage">
-    <h2>I tuoi team</h2>
-    <div class = "teamDiv">
-        <h3 class = "teamTitle">Titolo del team</h3>
-        <div class = "members">
-            <div class = "pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "pokemon">
-            </div>
+<section id="bodyPage">
 
-            <div class = "pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/charizard.png" alt="" class = "pokemon">
-            </div>
-            <div class = "pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/brute-bonnet.png" alt="" class = "pokemon">
-            </div>
-            <div class = "pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/zekrom.png" alt="" class = "pokemon">
-            </div>
-            <div class = "pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/necrozma.png" alt="" class = "pokemon">
-            </div>
-            <div class = "pokemonContainer">
-                <img src="../images/pokeballSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/ursaluna.png" alt="" class = "pokemon">
-            </div>
+<div id = "pokemonList" style="border: 1px white solid; width: 100%; height: 50px; margin-bottom: 30px;">
+
+</div>
+<div class = "divChart" style="border: white 1px solid; width: 900px; height: 300px; display: flex">
+    <div class = "imgPokemonDiv" style="height: 100%; width: 20%; border: white 1px solid">
+        <div class = "imgPokemon">
+
         </div>
+        <div class = "pokemonName">
 
-    </div>
-    <div class = "teamDiv">
-        <h3 class = "teamTitle">Titolo del team</h3>
-        <div class = "members">
-            <div class = "pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "pokemon">
-            </div>
-
-            <div class = "pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/charizard.png" alt="" class = "pokemon">
-            </div>
-            <div class = "pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/brute-bonnet.png" alt="" class = "pokemon">
-            </div>
-            <div class = "pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/zekrom.png" alt="" class = "pokemon">
-            </div>
-            <div class = "pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/necrozma.png" alt="" class = "pokemon">
-            </div>
-            <div class = "pokemonContainer">
-                <img src="../images/pokeballSprite.png" alt="" class = "pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/ursaluna.png" alt="" class = "pokemon">
-            </div>
         </div>
     </div>
-    <button><i class = "fas fa-plus-circle"></i>New Team</button>
+    <div class = "abilities-items" style="height: 100%; width: 25%; border: white 1px solid">
+        <div class = "abilityDiv">
+
+        </div>
+        <div class = "itemDiv">
+
+        </div>
+    </div>
+    <div class = "moveSet" style="height: 100%; width: 25%; border: white 1px solid">
+        <div class = "move1">
+
+        </div>
+        <div class = "move2">
+
+        </div>
+        <div class="move3">
+
+        </div>
+        <div class="move4">
+
+        </div>
+    </div stys>
+    <div class = "divStatistics" style="height: 100%; width: 30%; border: white 1px solid">
+
+    </div>
+</div>
 
 </section>
 

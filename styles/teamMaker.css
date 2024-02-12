@@ -1,5 +1,9 @@
 
-
+body{
+    background: url("../images/backgroundSV.png") no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
 body,header{
     margin: 0;
     padding: 0;
@@ -7,12 +11,27 @@ body,header{
     height: 100px;
 }
 
+h2{
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+}
 
+.teamButton{
+    margin-top: 10px;
+}
 #bodyPage{
     width: 100%;
     margin-top: 100px;
+    padding: 30px;
 }
+#newTeamButton{
+    padding: 5px;
+    font-size: 20px;
+}
+
 .fa-plus-circle:before{
+
     content: "\f055";
     transition: color 0.3s ease;
 
@@ -22,6 +41,7 @@ body,header{
 }
 
 .teamDiv{
+    background: white;
     border-radius: 25px;
     padding: 20px;
     display: block;
@@ -31,6 +51,7 @@ body,header{
 }
 
 .pokemonContainer {
+
     position: relative;
     width: 80px; /* Larghezza desiderata per il contenitore del Pokémon */
     height: 80px; /* Altezza desiderata per il contenitore del Pokémon */
