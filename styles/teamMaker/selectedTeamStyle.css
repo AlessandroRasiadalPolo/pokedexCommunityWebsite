@@ -1,0 +1,78 @@
+#pokemonList{
+    border: 1px white solid;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 30px;
+}
+.divChart{
+    border: white 1px solid;
+    width: 900px;
+    height: 200px;
+    display: flex;
+}
+.imgPokemonDiv{
+    height: 100%;
+    width: 18%;
+    border: white 1px solid;
+
+}
+.pokemonImg{
+    width: 100%;
+}
+.pokemonName{
+    width: 100%; height: 30%;
+}
+.abilities-items{
+    text-align: center;
+    width: 40%;
+    height: 100%;
+    border: white 1px solid;
+}
+.moveSet{
+    height: 100%; width: 25%;
+    border: white 1px solid;
+}
+
+.pokemonName{
+    width: 100%;
+    margin-top: 5px;
+    font-size: 20px;
+}
+.divStatistics{
+    justify-content: center;
+    height: 100%;
+    width: 30%;
+    border: white 1px solid;
+}
+.move{
+    margin-top: 10%;
+
+}
+.abilityDiv{
+    margin-top: 10%;
+}
+.itemDiv{
+    margin-top: 10%;
+}
+.statsContainer{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.stats{
+    margin-left: 5px;
+    height: 12px;
+    margin-top: 8.5%;
+    width: 126px;
+    border: white 1px solid
+}
+
+.statsName{
+    height: 12px;
+    font-size: 20px;
+}
+
+

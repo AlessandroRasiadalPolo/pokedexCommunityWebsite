@@ -5,10 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../styles/teamMaker.css">
+    <link rel="stylesheet" href="../styles/teamMaker/teamMaker.css">
     <link rel="stylesheet" href="../styles/header.css">
     <!-- Link per Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/teamMaker/selectedTeamStyle.css">
     <!-- Link per Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src="../scripts/DataSaverHandler.js"></script>
@@ -41,42 +42,69 @@
 
 <section id="bodyPage">
 
-<div id = "pokemonList" style="border: 1px white solid; width: 100%; height: 50px; margin-bottom: 30px;">
+<div id = "pokemonList">
 
 </div>
-<div class = "divChart" style="border: white 1px solid; width: 900px; height: 300px; display: flex">
-    <div class = "imgPokemonDiv" style="height: 100%; width: 20%; border: white 1px solid">
+<div class = "divChart">
+    <div class = "imgPokemonDiv">
+        
         <div class = "imgPokemon">
-
+            <img src="https://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif" class = "pokemonImg" alt="">
         </div>
-        <div class = "pokemonName">
-
+        <div class = "pokemonName" style="">
+            <input type="text" name="" class ="pokemonName">
         </div>
     </div>
-    <div class = "abilities-items" style="height: 100%; width: 25%; border: white 1px solid">
+    <div class = "abilities-items">
         <div class = "abilityDiv">
+            <label for="">Item</label>
+            <input type="text" name="" id="">
 
         </div>
         <div class = "itemDiv">
-
+            <label for="">Ability</label>
+            <input type="text" name="" id="">
         </div>
     </div>
-    <div class = "moveSet" style="height: 100%; width: 25%; border: white 1px solid">
-        <div class = "move1">
-
+    <div class = "moveSet">
+        <div class = "move">
+            <input type="text" name="" id="">
         </div>
-        <div class = "move2">
-
+        <div class = "move">
+            <input type="text" name="" id="">
         </div>
-        <div class="move3">
-
+        <div class="move">
+            <input type="text" name="" id="">
         </div>
-        <div class="move4">
-
+        <div class="move">
+            <input type="text" name="" id="">
         </div>
-    </div stys>
-    <div class = "divStatistics" style="height: 100%; width: 30%; border: white 1px solid">
-
+    </div>
+    <div class = "divStatistics">
+        <div class = "statsContainer">
+            <label class = "statsName" for="">HP</label>
+            <div class = "stats"></div>
+        </div>
+        <div class = "statsContainer">
+            <label class = "statsName" for="">ATK</label>
+            <div class = "stats"></div>
+        </div>
+        <div class = "statsContainer">
+            <label class = "statsName" for="">SPE</label>
+            <div class = "stats"></div>
+        </div>
+        <div class = "statsContainer">
+            <label class = "statsName" for="">SPD</label>
+            <div class = "stats"></div>
+        </div>
+        <div class = "statsContainer">
+            <label class = "statsName" for="">DEF</label>
+            <div class = "stats"></div>
+        </div>
+        <div class = "statsContainer">
+            <label class = "statsName" for="">SATK</label>
+            <div class = "stats"></div>
+        </div>
     </div>
 </div>
 
