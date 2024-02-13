@@ -16,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src = "../scripts/ajax-functions.js"></script>
     <title>TeamMaker</title>
 </head>
 <body>
@@ -52,7 +53,7 @@
             <img src="https://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif" class = "pokemonImg" alt="">
         </div>
         <div class = "pokemonName" style="">
-            <input type="text" name="" class ="pokemonName">
+            <input type="text" name="" class ="pokemonName" onkeyup="showPokemon(this.value)">
         </div>
     </div>
     <div class = "abilities-items">
@@ -107,6 +108,69 @@
         </div>
     </div>
 </div>
+
+    <div class = "divChart">
+        <div class = "imgPokemonDiv">
+
+            <div class = "imgPokemon">
+                <img src="https://www.smogon.com/dex/media/sprites/xy/charizard.gif" class = "pokemonImg" alt="">
+            </div>
+            <div class = "pokemonName" style="">
+                <input type="text" name="" class ="pokemonName" id = "pokemonNameTxt">
+            </div>
+        </div>
+        <div class = "abilities-items">
+            <div class = "abilityDiv">
+                <label for="">Item</label>
+                <input type="text" name="" id="itemNameTxt">
+
+            </div>
+            <div class = "itemDiv">
+                <label for="">Ability</label>
+                <input type="text" name="" id="itemNameTxt">
+            </div>
+        </div>
+        <div class = "moveSet">
+            <div class = "move">
+                <input type="text" name="" id="move1Txt">
+            </div>
+            <div class = "move">
+                <input type="text" name="" id="move2Txt">
+            </div>
+            <div class="move">
+                <input type="text" name="" id="move3Txt">
+            </div>
+            <div class="move">
+                <input type="text" name="" id="move4Txt">
+            </div>
+        </div>
+        <div class = "divStatistics">
+            <div class = "statsContainer">
+                <label class = "statsName" for="">HP</label>
+                <div class = "stats"></div>
+            </div>
+            <div class = "statsContainer">
+                <label class = "statsName" for="">ATK</label>
+                <div class = "stats"></div>
+            </div>
+            <div class = "statsContainer">
+                <label class = "statsName" for="">SPE</label>
+                <div class = "stats"></div>
+            </div>
+            <div class = "statsContainer">
+                <label class = "statsName" for="">SPD</label>
+                <div class = "stats"></div>
+            </div>
+            <div class = "statsContainer">
+                <label class = "statsName" for="">DEF</label>
+                <div class = "stats"></div>
+            </div>
+            <div class = "statsContainer">
+                <label class = "statsName" for="">SATK</label>
+                <div class = "stats"></div>
+            </div>
+        </div>
+    </div>
 
 </section>
 
