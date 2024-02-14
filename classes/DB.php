@@ -115,29 +115,26 @@ class DB
                     FROM Pokemon AS P INNER JOIN Sviluppa AS S ON (P.NomePokemon = S.NomePokemon) 
                     INNER JOIN Abilità AS A ON (A.Nome = S.NomeAbilità) 
                     INNER JOIN Statistica AS ST ON(P.NomePokemon = ST.PokemonName) 
-                    WHERE P.NomePokemon LIKE '" . $nome . "%' LIMIT 4";
-        $stmt = $conn->prepare($fullSql);
-        $stmt->bind_param("s", $nome);
+                    WHERE P.NomePokemon LIKE ' . $nome .%' LIMIT 4";
 
-        if ($stmt->execute()) {
+        // Creo un array per memorizzare i pokemon
+        $pokemonNames = array();
+
+        if ($result = $conn->query($fullSql)) {
             // Ottengo già un risultato
-            $stmt->bind_result($nomePokemon);
+            if ($result > 0) {
+                while ($row = $result->fetch_assoc()) {
 
-            // Creo un array per memorizzare i pokemon
-            $pokemonNames = array();
-
-            // I risultati che ottengo li inserisco all'interno dell' array
-            while ($stmt->fetch()) {
-                $pokemonNames[] = $nomePokemon;
+                }
             }
 
-            $stmt->close();
+            // I risultati che ottengo li inserisco all'interno dell' array
+
             $conn->close();
 
             //Ritorno un formato JSON da ritornare
             return json_encode($pokemonNames);
         } else {
-            $stmt->close();
             $conn->close();
             return "Errore nell'esecuzione della query: " . $conn->error;
         }
