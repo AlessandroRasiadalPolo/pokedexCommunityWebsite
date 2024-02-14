@@ -59,12 +59,12 @@
     <div class = "abilities-items">
         <div class = "abilityDiv">
             <label for="">Item</label>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="abilityName">
 
         </div>
         <div class = "itemDiv">
             <label for="">Ability</label>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="itemName">
         </div>
     </div>
     <div class = "moveSet">
@@ -84,93 +84,30 @@
     <div class = "divStatistics">
         <div class = "statsContainer">
             <label class = "statsName" for="">HP</label>
-            <div class = "stats"></div>
+            <div class = "stats" id = "hpDiv"></div>
         </div>
         <div class = "statsContainer">
             <label class = "statsName" for="">ATK</label>
-            <div class = "stats"></div>
+            <div class = "stats" id = "atkDiv"></div>
         </div>
         <div class = "statsContainer">
             <label class = "statsName" for="">SPE</label>
-            <div class = "stats"></div>
+            <div class = "stats" id = "speDiv"></div>
         </div>
         <div class = "statsContainer">
             <label class = "statsName" for="">SPD</label>
-            <div class = "stats"></div>
+            <div class = "stats" id = "spdDiv"></div>
         </div>
         <div class = "statsContainer">
             <label class = "statsName" for="">DEF</label>
-            <div class = "stats"></div>
+            <div class = "stats" id = "defDiv"></div>
         </div>
         <div class = "statsContainer">
             <label class = "statsName" for="">SATK</label>
-            <div class = "stats"></div>
+            <div class = "stats" id = "spaDiv"></div>
         </div>
     </div>
 </div>
-
-    <div class = "divChart">
-        <div class = "imgPokemonDiv">
-
-            <div class = "imgPokemon">
-                <img src="https://www.smogon.com/dex/media/sprites/xy/charizard.gif" class = "pokemonImg" alt="">
-            </div>
-            <div class = "pokemonName" style="">
-                <input type="text" name="" class ="pokemonName" id = "pokemonNameTxt">
-            </div>
-        </div>
-        <div class = "abilities-items">
-            <div class = "abilityDiv">
-                <label for="">Item</label>
-                <input type="text" name="" id="itemNameTxt">
-
-            </div>
-            <div class = "itemDiv">
-                <label for="">Ability</label>
-                <input type="text" name="" id="itemNameTxt">
-            </div>
-        </div>
-        <div class = "moveSet">
-            <div class = "move">
-                <input type="text" name="" id="move1Txt">
-            </div>
-            <div class = "move">
-                <input type="text" name="" id="move2Txt">
-            </div>
-            <div class="move">
-                <input type="text" name="" id="move3Txt">
-            </div>
-            <div class="move">
-                <input type="text" name="" id="move4Txt">
-            </div>
-        </div>
-        <div class = "divStatistics">
-            <div class = "statsContainer">
-                <label class = "statsName" for="">HP</label>
-                <div class = "stats"></div>
-            </div>
-            <div class = "statsContainer">
-                <label class = "statsName" for="">ATK</label>
-                <div class = "stats"></div>
-            </div>
-            <div class = "statsContainer">
-                <label class = "statsName" for="">SPE</label>
-                <div class = "stats"></div>
-            </div>
-            <div class = "statsContainer">
-                <label class = "statsName" for="">SPD</label>
-                <div class = "stats"></div>
-            </div>
-            <div class = "statsContainer">
-                <label class = "statsName" for="">DEF</label>
-                <div class = "stats"></div>
-            </div>
-            <div class = "statsContainer">
-                <label class = "statsName" for="">SATK</label>
-                <div class = "stats"></div>
-            </div>
-        </div>
-    </div>
 
 </section>
 

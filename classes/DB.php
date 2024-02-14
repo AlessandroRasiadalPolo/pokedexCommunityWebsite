@@ -54,7 +54,7 @@ class DB
 
         $result = $conn->query($sql);
         //Per un avvertimento di PHP preferisco specificare che devo controllare che il numero delle righe sia maggiore di 0
-        if ($result->field_count > 0) {
+        if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 if ($row['Id'] == $username && $row['password'] == $password) {
                     $conn->close();
@@ -115,17 +115,31 @@ class DB
                     FROM Pokemon AS P INNER JOIN Sviluppa AS S ON (P.NomePokemon = S.NomePokemon) 
                     INNER JOIN Abilità AS A ON (A.Nome = S.NomeAbilità) 
                     INNER JOIN Statistica AS ST ON(P.NomePokemon = ST.PokemonName) 
-                    WHERE P.NomePokemon LIKE ' . $nome .%' LIMIT 4";
+                    WHERE P.NomePokemon LIKE '" . $nome ."%' LIMIT 30";
 
         // Creo un array per memorizzare i pokemon
         $pokemonNames = array();
+        $result = $conn->query($fullSql);
+        // Ottengo già un risultato
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                // Creo un nuovo array associativo per ogni record
+                $pokemon = array();
+                $pokemon['pokemonName'] = $row['NP'];
+                $pokemon['Id'] = $row['PokedexId'];
+                $pokemon['primaryType'] = $row['NomeTipo1'];
+                $pokemon['secondaryType'] = $row['NomeTipo2'];
+                $pokemon['icon'] = $row['Icon'];
+                $pokemon['ability'] = $row['NomeAbilità'];
+                $pokemon['atk'] = $row['Atk'];
+                $pokemon['def'] = $row['Def'];
+                $pokemon['spe'] = $row['Spe'];
+                $pokemon['SAtk'] = $row['SAtk'];
+                $pokemon['SDef'] = $row['SDef'];
+                $pokemon['PS'] = $row['PS'];
 
-        if ($result = $conn->query($fullSql)) {
-            // Ottengo già un risultato
-            if ($result > 0) {
-                while ($row = $result->fetch_assoc()) {
-
-                }
+                // Aggiungo il nuovo array all'array principale
+                $pokemonNames[] = $pokemon;
             }
 
             // I risultati che ottengo li inserisco all'interno dell' array
@@ -134,11 +148,8 @@ class DB
 
             //Ritorno un formato JSON da ritornare
             return json_encode($pokemonNames);
-        } else {
-            $conn->close();
-            return "Errore nell'esecuzione della query: " . $conn->error;
-        }
 
+        }
     }
 
 
