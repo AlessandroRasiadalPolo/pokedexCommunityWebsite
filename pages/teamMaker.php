@@ -50,10 +50,10 @@
     <div class = "imgPokemonDiv">
         
         <div class = "imgPokemon">
-            <img src="https://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif" class = "pokemonImg" alt="">
+            <img src="https://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif" class = "pokemonImg" alt="" id = "imageId">
         </div>
         <div class = "pokemonName" style="">
-            <input type="text" name="" class ="pokemonName" onkeyup="showPokemon(this.value)">
+            <input type="text" id="nomePokemonTxt" class ="pokemonName" onkeyup="showPokemon(this.value)">
         </div>
     </div>
     <div class = "abilities-items">

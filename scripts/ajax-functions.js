@@ -67,7 +67,6 @@ function updateTable(data) {
     data.forEach(function(pokemon) {
         let row = tableBody.insertRow();
         newurl = iconrow+ pokemon.pokemonName.toLowerCase() + ".png";
-        //pokemonIcon = (pokemon.Id > 906) ? newurl : "https://img.pokemondb.net/sprites/sword-shield/normal/" + pokemon.pokemonName.toLowerCase() + ".png";
         row.innerHTML = "<td>" +
             "<img src=\"" + newurl + "\" class = 'imgTable'>\n</td>" +
             "<td>" + pokemon.pokemonName + "</td>" +
@@ -85,6 +84,7 @@ function updateTable(data) {
 }
 
 function clickPokemon(event) {
+
     let row = event.target.closest("tr");
     if (row && row.rowIndex !== 0) { // Controlla se la riga è valida e non è l'intestazione
         let cells = row.getElementsByTagName("td");
@@ -101,8 +101,13 @@ function clickPokemon(event) {
         document.getElementById("spaDiv").style.width = SAtk + "px";
         document.getElementById("spdDiv").style.width = SDef + "px";
         document.getElementById("speDiv").style.width = spe + "px";
+        document.getElementById("imageId").src = "https://www.smogon.com/dex/media/sprites/xy/" + cells[1].textContent.toLowerCase() + ".gif";
+        document.getElementById("nomePokemonTxt").value = cells[1].textContent.toLowerCase();
+        document.getElementById("abilityName").value = cells[2].textContent;
     }
 }
+
+
 
 
 
