@@ -43,8 +43,7 @@
 
 <section id="bodyPage">
 
-<div id = "pokemonList">
-
+<div id = "pokemonList" style="display: flex">
 </div>
 <div class = "divChart">
     <div class = "imgPokemonDiv">
@@ -53,17 +52,17 @@
             <img src="https://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif" class = "pokemonImg" alt="" id = "imageId">
         </div>
         <div class = "pokemonName" style="">
-            <input type="text" id="nomePokemonTxt" class ="pokemonName" onkeyup="showPokemon(this.value)">
+            <input type="text" id="nomePokemonTxt" class ="pokemonName" onkeyup="showPokemon(this.value)" value = "bulbasaur">
         </div>
     </div>
     <div class = "abilities-items">
         <div class = "abilityDiv">
-            <label for="">Item</label>
-            <input type="text" name="" id="abilityName">
+            <label for="">Ability</label>
+            <input type="text" name="" id="abilityName" value = "Overgrow">
 
         </div>
         <div class = "itemDiv">
-            <label for="">Ability</label>
+            <label for="">Item</label>
             <input type="text" name="" id="itemName">
         </div>
     </div>

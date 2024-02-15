@@ -25,6 +25,19 @@ function showPokemon(pokemonName) {
     }
 }
 
+window.addEventListener("load", function() {
+    loadFirstElement();
+});
+
+function loadFirstElement(){
+    // Ottieni il primo Pokémon presente nella pagina
+    let pokemonName = document.getElementById("nomePokemonTxt").value; // Supponendo che l'elemento che contiene il nome del Pokémon abbia l'id "pokemonName"
+    let ability = document.getElementById("abilityName").value; // Supponendo che l'elemento che contiene il nome dell'abilità abbia l'id "abilityName"
+
+    // Aggiungi un pulsante al div "pokemonList" collegato al primo Pokémon
+    addPokemonButton(pokemonName, ability);
+}
+
 function createTable() {
     let div = document.createElement("div");
     div.style.width = "100%";
@@ -80,6 +93,41 @@ function updateTable(data) {
             "<td>" + pokemon.SDef + "</td>" +
             "<td>" + pokemon.spe + "</td>";
     });
+
+}
+
+// Funzione per aggiungere un nuovo Pokémon alla squadra
+function addPokemonButton(pokemonName, ability) {
+    let divTeamList = document.getElementById("pokemonList");
+
+    // Creazione del pulsante
+    let newButton = document.createElement("button");
+    newButton.textContent = pokemonName;
+    newButton.dataset.pokemonName = pokemonName; // Salva il nome del Pokémon come attributo personalizzato
+    newButton.dataset.ability = ability; // Salva l'abilità del Pokémon come attributo personalizzato
+
+    // Aggiungi un evento click al pulsante per mostrare le informazioni del Pokémon
+    newButton.addEventListener("click", function() {
+        // Quando il pulsante viene cliccato, mostra le informazioni del Pokémon associato
+        updatePokemonDetails(pokemonName, ability);
+    });
+
+    // Aggiungi il pulsante al div del team
+    divTeamList.appendChild(newButton);
+
+    // Aggiungi un pulsante "+" dopo il nuovo pulsante per aggiungere un altro Pokémon
+    let buttonAdd = document.createElement("button");
+    buttonAdd.innerHTML = "<i class='fas fa-plus-circle'></i>";
+    buttonAdd.style.width = "100px";
+    buttonAdd.style.height = "100%";
+    buttonAdd.onclick = function() {
+        // Aggiungiamo un altro Pokémon alla squadra
+        addAnotherPokemon();
+    };
+    divTeamList.appendChild(buttonAdd);
+}
+
+function addAnotherPokemon() {
 
 }
 
