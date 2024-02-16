@@ -187,5 +187,46 @@ class DB
             return 0;
     }
 
+    //Dovrò passare 2 parametri da javascript
+    public function getMovesHint($nomeMossa, $nomePokemon){
+        $conn = self::connection();
+
+        //Tramite questa query ottengo tutti i dati che mi interessano
+        $fullSql = "SELECT M.* FROM Impara I INNER JOIN Mossa M ON (M.Nome = Nome)
+                    WHERE I.NomePokemon = $nomePokemon AND M.Nome LIKE '" . $nomeMossa ."%' LIMIT 30";
+
+        // Creo un array per memorizzare gli strumenti
+        $moves = array();
+        $result = $conn->query($fullSql);
+        // Ottengo già un risultato
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                // Creo un nuovo array associativo per ogni record
+                $move = array();
+                $move['Nome'] = $row['Nome'];
+                $move['Effetto'] = $row['Effetto'];
+                $move['PP'] = $row['Pp'];
+                $move['Tipo'] = $row['Tipo'];
+                $move['power'] = $row['Potenza'];
+                $move['accuracy'] = $row['Precisione'];
+                $move['priority'] = $row['Priorità'];
+                $move['category'] = $row['Categoria'];
+
+                // Aggiungo il nuovo array all'array principale
+                $moves[] = $move;
+            }
+
+            // I risultati che ottengo li inserisco all'interno dell' array
+
+            $conn->close();
+
+            //Ritorno un formato JSON da ritornare
+            return json_encode($moves);
+
+        }
+        else
+            return 0;
+    }
+
 
 }
