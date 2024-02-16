@@ -108,8 +108,6 @@ class DB
     {
         $conn = self::connection();
 
-        //Ottengo tutti i primi 4 pokemon che hanno il nome simile a quello cercato dall'utente
-        $sql = "Select NomePokemon FROM pokemon where NomePokemon  LIKE '" . $nome . "%' LIMIT 4";
         //Tramite questa query ottengo tutti i dati che mi interessano
         $fullSql = "SELECT P.NomePokemon AS NP, P.PokedexId, P.NomeTipo1, P.NomeTipo2, P.Generazione, P.Icon, S.NomeAbilità, A.Effetto, ST.Atk, ST.Spe, ST.Def, ST.SAtk, ST.SDef, ST.PS  
                     FROM Pokemon AS P INNER JOIN Sviluppa AS S ON (P.NomePokemon = S.NomePokemon) 
@@ -150,6 +148,43 @@ class DB
             return json_encode($pokemonNames);
 
         }
+        else
+            return 0;
+    }
+
+    public function getItemHint($nome)
+    {
+        $conn = self::connection();
+
+        //Tramite questa query ottengo tutti i dati che mi interessano
+        $fullSql = "SELECT * FROM strumento S 
+                    WHERE S.Nome LIKE '" . $nome ."%' LIMIT 30";
+
+        // Creo un array per memorizzare gli strumenti
+        $itemNames = array();
+        $result = $conn->query($fullSql);
+        // Ottengo già un risultato
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                // Creo un nuovo array associativo per ogni record
+                $item = array();
+                $item['Nome'] = $row['Nome'];
+                $item['Effetto'] = $row['Effetto'];
+
+                // Aggiungo il nuovo array all'array principale
+                $itemNames[] = $item;
+            }
+
+            // I risultati che ottengo li inserisco all'interno dell' array
+
+            $conn->close();
+
+            //Ritorno un formato JSON da ritornare
+            return json_encode($itemNames);
+
+        }
+        else
+            return 0;
     }
 
 

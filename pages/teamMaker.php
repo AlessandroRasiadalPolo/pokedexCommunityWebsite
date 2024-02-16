@@ -13,6 +13,7 @@
     <!-- Link per Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src="../scripts/DataSaverHandler.js"></script>
+    <script src="../scripts/InformationHandler.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -64,7 +65,7 @@
         </div>
         <div class = "itemDiv">
             <label for="">Item</label>
-            <input type="text" name="" id="itemName" class = "itemInput">
+            <input type="text" name="" id="itemName" class = "itemInput" onkeyup="showItem(this.value)">
         </div>
     </div>
     <div class = "moveSet">
