@@ -1,5 +1,6 @@
 var tableCreated = false;
 var pokemons = [];
+var clickedButton = 0;
 function showPokemon(pokemonName) {
     if (pokemonName === "") {
         document.getElementById("pokemonNameTxt").innerHTML = "";
@@ -99,7 +100,8 @@ document.getElementById("buttonAddPokemon").addEventListener("click", function()
         def: parseInt(document.getElementById("defDiv").style.width),
         SAtk: parseInt(document.getElementById("spaDiv").style.width),
         SDef: parseInt(document.getElementById("spdDiv").style.width),
-        spe: parseInt(document.getElementById("speDiv").style.width)
+        spe: parseInt(document.getElementById("speDiv").style.width),
+        buttonIndex: pokemons.length-1
     };
     pokemons.push(newPokemon);
 
@@ -117,6 +119,7 @@ document.getElementById("buttonAddPokemon").addEventListener("click", function()
         let pokemon = pokemons[pokemonIndex];
         updatePokemonDetails(pokemon);
         console.log("Pokemon cliccato:", pokemonIndex);
+        clickedButton = pokemonIndex;
     });
 
     // Inserisci il nuovo pulsante prima del pulsante "Aggiungi Pokémon"
@@ -142,25 +145,30 @@ function addAnotherPokemon() {
 
 function clickPokemon(event) {
 
+    let newPokemon = {};
     let row = event.target.closest("tr");
     if (row && row.rowIndex !== 0) { // Controlla se la riga è valida e non è l'intestazione
         let cells = row.getElementsByTagName("td");
-        let PS = parseInt(cells[5].textContent);
-        let atk = parseInt(cells[6].textContent);
-        let def = parseInt(cells[7].textContent);
-        let SAtk = parseInt(cells[8].textContent);
-        let SDef = parseInt(cells[9].textContent);
-        let spe = parseInt(cells[10].textContent);
+        newPokemon.ps = parseInt(cells[5].textContent);
+        newPokemon.atk = parseInt(cells[6].textContent);
+        newPokemon.def = parseInt(cells[7].textContent);
+        newPokemon.SAtk = parseInt(cells[8].textContent);
+        newPokemon.SDef = parseInt(cells[9].textContent);
+        newPokemon.spe = parseInt(cells[10].textContent);
+        newPokemon.name = cells[1].textContent.toLowerCase();
+        newPokemon.image = "https://www.smogon.com/dex/media/sprites/xy/" + newPokemon.name  + ".gif";
+        newPokemon.ability = cells[2].textContent;
 
-        document.getElementById("hpDiv").style.width = PS + "px";
-        document.getElementById("atkDiv").style.width = atk + "px";
-        document.getElementById("defDiv").style.width = def + "px";
-        document.getElementById("spaDiv").style.width = SAtk + "px";
-        document.getElementById("spdDiv").style.width = SDef + "px";
-        document.getElementById("speDiv").style.width = spe + "px";
-        document.getElementById("imageId").src = "https://www.smogon.com/dex/media/sprites/xy/" + cells[1].textContent.toLowerCase() + ".gif";
-        document.getElementById("nomePokemonTxt").value = cells[1].textContent.toLowerCase();
-        document.getElementById("abilityName").value = cells[2].textContent;
+        document.getElementById("hpDiv").style.width = newPokemon.ps + "px";
+        document.getElementById("atkDiv").style.width = newPokemon.atk + "px";
+        document.getElementById("defDiv").style.width = newPokemon.def + "px";
+        document.getElementById("spaDiv").style.width = newPokemon.SAtk + "px";
+        document.getElementById("spdDiv").style.width = newPokemon.SDef + "px";
+        document.getElementById("speDiv").style.width = newPokemon.spe + "px";
+        document.getElementById("imageId").src = newPokemon.image;
+        document.getElementById("nomePokemonTxt").value = newPokemon.name;
+        document.getElementById("abilityName").value = newPokemon.ability;
+        pokemons[clickedButton] = newPokemon;
     }
 }
 
