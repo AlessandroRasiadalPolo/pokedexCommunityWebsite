@@ -1,5 +1,6 @@
 var tableCreated = false;
 var pokemons = [];
+var clickedB
 function showPokemon(pokemonName) {
     if (pokemonName === "") {
         document.getElementById("pokemonNameTxt").innerHTML = "";
@@ -89,39 +90,43 @@ function updateTable(data) {
 document.addEventListener("DOMContentLoaded", function() {
 
 document.getElementById("buttonAddPokemon").addEventListener("click", function() {
-    // Aggiungi un nuovo Pokémon all'array
-    let newPokemon = {
-        name: document.getElementById("nomePokemonTxt").value,
-        ability: document.getElementById("abilityName").value,
-        image: document.getElementById("imageId").src,
-        ps: parseInt(document.getElementById("hpDiv").style.width),
-        atk: parseInt(document.getElementById("atkDiv").style.width),
-        def: parseInt(document.getElementById("defDiv").style.width),
-        SAtk: parseInt(document.getElementById("spaDiv").style.width),
-        SDef: parseInt(document.getElementById("spdDiv").style.width),
-        spe: parseInt(document.getElementById("speDiv").style.width)
-    };
-    pokemons.push(newPokemon);
+    if(pokemons.length !== 6) {
+        // Aggiungi un nuovo Pokémon all'array
+        let newPokemon = {
+            name: document.getElementById("nomePokemonTxt").value,
+            ability: document.getElementById("abilityName").value,
+            image: document.getElementById("imageId").src,
+            ps: parseInt(document.getElementById("hpDiv").style.width),
+            atk: parseInt(document.getElementById("atkDiv").style.width),
+            def: parseInt(document.getElementById("defDiv").style.width),
+            SAtk: parseInt(document.getElementById("spaDiv").style.width),
+            SDef: parseInt(document.getElementById("spdDiv").style.width),
+            spe: parseInt(document.getElementById("speDiv").style.width)
+        };
+        pokemons.push(newPokemon);
 
-    // Crea un nuovo pulsante per il nuovo Pokémon
-    let newButton = document.createElement("button");
-    newButton.className = "buttonList";
-    newButton.textContent = newPokemon.name;
+        // Crea un nuovo pulsante per il nuovo Pokémon
+        let newButton = document.createElement("button");
+        newButton.className = "buttonList";
+        newButton.textContent = newPokemon.name;
 
-    // Aggiungi l'indice del Pokémon come attributo personalizzato
-    newButton.dataset.index = pokemons.length - 1;
+        // Aggiungi l'indice del Pokémon come attributo personalizzato
+        newButton.dataset.index = pokemons.length - 1;
 
-    // Aggiungi l'evento click al nuovo pulsante
-    newButton.addEventListener("click", function() {
-        let pokemonIndex = parseInt(this.dataset.index);
-        let pokemon = pokemons[pokemonIndex];
-        updatePokemonDetails(pokemon);
-        console.log("Pokemon cliccato:", pokemonIndex);
-    });
+        // Aggiungi l'evento click al nuovo pulsante
+        newButton.addEventListener("click", function () {
+            let pokemonIndex = parseInt(this.dataset.index);
+            let pokemon = pokemons[pokemonIndex];
+            updatePokemonDetails(pokemon);
+            console.log("Pokemon cliccato:", pokemonIndex);
+        });
 
-    // Inserisci il nuovo pulsante prima del pulsante "Aggiungi Pokémon"
-    let addButton = document.getElementById("buttonAddPokemon");
-    addButton.parentNode.insertBefore(newButton, addButton);
+        // Inserisci il nuovo pulsante prima del pulsante "Aggiungi Pokémon"
+        let addButton = document.getElementById("buttonAddPokemon");
+        addButton.parentNode.insertBefore(newButton, addButton);
+    }
+    else
+        document.getElementById("buttonAddPokemon").style.display = "none";
 });
     });
 function updatePokemonDetails(pokemon) {

@@ -59,12 +59,12 @@
     <div class = "abilities-items">
         <div class = "abilityDiv">
             <label for="">Ability</label>
-            <input type="text" name="" id="abilityName" value = "Overgrow">
+            <input type="text" name="" id="abilityName" value = "Overgrow" class = "abiliyInput">
 
         </div>
         <div class = "itemDiv">
             <label for="">Item</label>
-            <input type="text" name="" id="itemName">
+            <input type="text" name="" id="itemName" class = "itemInput">
         </div>
     </div>
     <div class = "moveSet">
