@@ -44,6 +44,7 @@
 <section id="bodyPage">
 
 <div id = "pokemonList" style="display: flex">
+    <button class = "buttonList" id = "buttonAddPokemon"><i class="fas fa-plus-circle"></i></button>
 </div>
 <div class = "divChart">
     <div class = "imgPokemonDiv">
