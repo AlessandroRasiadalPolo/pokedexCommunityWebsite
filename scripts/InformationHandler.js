@@ -208,7 +208,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 def: parseInt(document.getElementById("defDiv").style.width),
                 SAtk: parseInt(document.getElementById("spaDiv").style.width),
                 SDef: parseInt(document.getElementById("spdDiv").style.width),
-                spe: parseInt(document.getElementById("speDiv").style.width)
+                spe: parseInt(document.getElementById("speDiv").style.width),
+                move1: document.getElementById("move1").value,
+                move2: document.getElementById("move2").value,
+                move3: document.getElementById("move3").value,
+                move4: document.getElementById("move4").value,
+                item: document.getElementById("itemName").value
+
             };
             pokemons.push(newPokemon);
 
