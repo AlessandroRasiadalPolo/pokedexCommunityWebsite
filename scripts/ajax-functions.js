@@ -2,6 +2,7 @@ var tableCreated = false;
 var pokemons = [];
 var clickedButton = 0;
 var currentTableType = "";
+var lastInput;
 
 function showPokemon(pokemonName) {
     if (pokemonName === "") {
@@ -40,11 +41,22 @@ function showItem(itemName) {
         xmlhttp.send();
     }
 }
-
-
-function showAbility(abilityName){
-
-}
-function showMove(moveName){
-
+function showMoves(inputId, moveName) {
+    lastInputId = inputId;
+    if (moveName === "") {
+        document.getElementById("").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                console.log(this.responseText);
+                let risposte = JSON.parse(this.responseText);
+                let tableType = "move"; // Imposta il tipo di tabella a "item"
+                createOrUpdateTable(tableType, risposte);
+            }
+        };
+        xmlhttp.open("GET", "../../pages/methods.php?moveName=" + moveName + "&pokemonName=" + document.getElementById("nomePokemonTxt").value , true);
+        xmlhttp.send();
+    }
 }

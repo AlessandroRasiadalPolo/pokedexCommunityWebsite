@@ -70,16 +70,16 @@
     </div>
     <div class = "moveSet">
         <div class = "move">
-            <input type="text" name="" id="">
+            <input type="text" name="" id="move1" onkeyup="showMoves(this.id, this.value)">
         </div>
         <div class = "move">
-            <input type="text" name="" id="">
+            <input type="text" name="" id="move2" onkeyup="showMoves(this.id,this.value)">
         </div>
         <div class="move">
-            <input type="text" name="" id="">
+            <input type="text" name="" id="move3" onkeyup="showMoves(this.id,this.value)">
         </div>
         <div class="move">
-            <input type="text" name="" id="">
+            <input type="text" name="" id="move4" onkeyup="showMoves(this.id, this.value)">
         </div>
     </div>
     <div class = "divStatistics">

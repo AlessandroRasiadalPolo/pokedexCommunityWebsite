@@ -4,21 +4,24 @@ function createOrUpdateTable(tableType, data) {
         // Rimuovi la tabella corrente, se presente
         removeTableIfExists();
         // Crea la nuova tabella in base al tipo specificato
-        if (tableType === "pokemon") {
+        if (tableType === "pokemon")
             createPokemonTable(data);
-        } else if (tableType === "item") {
+            else if (tableType === "item")
             createItemTable(data);
-        }
+        else if (tableType === "move")
+            createMoveTable(data);
+
         // Imposta il tipo di tabella corrente e il flag a true
         currentTableType = tableType;
         tableCreated = true;
     }
         // Se la tabella è già stata creata e ha lo stesso tipo, aggiorna semplicemente i dati
-        if (tableType === "pokemon") {
-            updateTable(data);
-        } else if (tableType === "item") {
-            updateItems(data);
-        }
+        if (tableType === "pokemon")
+                updateTable(data);
+            else if (tableType === "item")
+                updateItems(data);
+            else if (tableType === "move")
+                updateMoves(data);
 }
 function removeTableIfExists() {
     let existingTable = document.getElementById("tableHint");
@@ -73,7 +76,13 @@ function createItemTable(data) {
     // Creazione dell'intestazione della tabella
     let headerRow = table.createTHead().insertRow();
     headerRow.innerHTML = "<th>Nome</th>" +
-        "<th>Effetto</th>";
+        "<th>Effetto</th>" +
+        "<th>PP</th>" +
+        "<th>Tipo</th>" +
+        "<th>Potenza</th>" +
+        "<th>Precisione</th>" +
+        "<th>Priorità</th>" +
+        "<th>Categoria</th>";
     headerRow.style.color = "white";
 
     // Creazione del corpo della tabella
@@ -84,7 +93,43 @@ function createItemTable(data) {
     document.getElementById("bodyPage").appendChild(div);
     document.getElementById("tableHint").addEventListener("click", clickItem);
 }
+function createMoveTable(data) {
+    let div = document.createElement("div");
+    div.style.width = "100%";
+    div.style.height = "100%";
+    let table = createDefaultTable();
+    // Creazione dell'intestazione della tabella
+    let headerRow = table.createTHead().insertRow();
+    headerRow.innerHTML = headerRow.innerHTML = "<th>Nome</th>" +
+        "<th>Effetto</th>" +
+        "<th>PP</th>" +
+        "<th>Tipo</th>" +
+        "<th>Potenza</th>" +
+        "<th>Precisione</th>" +
+        "<th>Priorità</th>" +
+        "<th>Categoria</th>";
+    headerRow.style.color = "white";
 
+    // Creazione del corpo della tabella
+    let tbody = document.createElement("tbody");
+    table.appendChild(tbody);
+
+    div.appendChild(table);
+    document.getElementById("bodyPage").appendChild(div);
+    document.getElementById("tableHint").addEventListener("click", clickMove);
+}
+
+
+function clickMove(event){
+    let row = event.target.closest("tr");
+    if (row && row.rowIndex !== 0) {
+        let cells = row.getElementsByTagName("td");
+        let lastInput = document.getElementById(lastInputId);
+        if (lastInput) {
+            lastInput.value = cells[0].textContent;
+        }
+    }
+}
 function clickItem(event){
     let row = event.target.closest("tr");
     if (row && row.rowIndex !== 0) {
@@ -113,6 +158,27 @@ function updateTable(data) {
             "<td>" + pokemon.SAtk + "</td>" +
             "<td>" + pokemon.SDef + "</td>" +
             "<td>" + pokemon.spe + "</td>";
+    });
+
+}
+
+function updateMoves(data){
+    let tableBody = document.getElementById("tableHint").getElementsByTagName("tbody")[0];
+    tableBody.innerHTML = ""; // Pulisci il corpo della tabella
+    data.forEach(function(move) {
+        let row = tableBody.insertRow();
+        row.innerHTML = "<td>" + move.Nome + "</td>" +
+            "<td>" + move.Effetto + "</td>" +
+            "<td>" + parseInt(move.PP) + "</td>" +
+            "<td>" + move.Tipo + "</td>" +
+            "<td>" +move.power + "</td>" +
+            "<td>" + move.accuracy  + "</td>" +
+            "<td>" + move.priority  + "</td>" +
+            "<td>" + move.category + "</td>";
+
+        row.addEventListener("click", function(event) {
+            clickMove(event); // Chiamata alla funzione clickMove
+        });
     });
 
 }

@@ -192,8 +192,9 @@ class DB
         $conn = self::connection();
 
         //Tramite questa query ottengo tutti i dati che mi interessano
-        $fullSql = "SELECT M.* FROM Impara I INNER JOIN Mossa M ON (M.Nome = Nome)
-                    WHERE I.NomePokemon = $nomePokemon AND M.Nome LIKE '" . $nomeMossa ."%' LIMIT 30";
+        $fullSql = "SELECT M.* FROM Impara I INNER JOIN Mossa M ON (M.Nome = I.NomeMossa)
+            WHERE I.NomePokemon = '" . $nomePokemon . "' AND M.Nome LIKE '" . $nomeMossa . "%' LIMIT 30";
+
 
         // Creo un array per memorizzare gli strumenti
         $moves = array();
