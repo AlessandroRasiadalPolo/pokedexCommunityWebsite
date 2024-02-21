@@ -28,11 +28,12 @@ class DB
         $conn = self::connection();
         $username = $utente['username'];
         $password = $utente['password'];
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $email = $utente['email'];
         $sql = "INSERT INTO utente(Id, Email, password) VALUES(?,?,?)";
         $stmt = $conn->prepare($sql);
         //il primo parametro specifica il tipo dei valori da passare
-        $stmt->bind_param("sss", $username, $email, $password);
+        $stmt->bind_param("sss", $username, $email, $hashed_password);
 
         if ($stmt->execute()) {
             $stmt->close();
@@ -56,7 +57,7 @@ class DB
         //Per un avvertimento di PHP preferisco specificare che devo controllare che il numero delle righe sia maggiore di 0
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                if ($row['Id'] == $username && $row['password'] == $password) {
+                if ($row['Id'] == $username && password_verify($password, $row['password']) == $password) {
                     $conn->close();
                     return 0;
                 }
@@ -278,7 +279,5 @@ class DB
             $stmt->close();
             return false;
         }
-
-
     }
 }
