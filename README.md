@@ -13,4 +13,7 @@
   <li>Garantire un sito responsive, ossia ben visualizzabile si dispositivi di diversa dimensione</li>
 </ol>
 
+<h2>Quali sono le particolarità del sito?</h2>
+<p>Il sito comunica con un server contenente tutte le informazioni sui pokemon e sugli utenti della community, quindi c'è una buona dose di PHP, tuttavia ritengo che all'interno di una buona pagina il solo utilizzo di PHP non basta per fornire una buona esperienza. Ho pensato quindi di facilitare il passaggio da una pagina all'altra sostituendo il codice php con javascript che sostuice in automatico gli elementi presenti. Per stampare e comunicare le informazioni ricevute o inviate al database è comunque più comodo usare PHP</p>
+
 
