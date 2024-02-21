@@ -113,5 +113,30 @@ input {
     padding-inline: 2px;
 }
 
+.types{
+    justify-content: center;
+    margin-right: 10px;
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+}
+.typeImage{
+    width: 50px;
+}
+#teamName{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+#teamNameTxt{
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+#labelTeamName{
+    font-size: 25px;
+}
+
 
 

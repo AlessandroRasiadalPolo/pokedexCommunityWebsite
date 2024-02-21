@@ -229,5 +229,56 @@ class DB
             return 0;
     }
 
+    public static function checkPokemonName($name)
+    {
+        $conn = self::connection();
+        $sql = "SELECT NomePokemon From pokemon WHERE NomePokemon = ".$name;
 
+        $result = $conn->query($sql);
+        if($result -> num_rows > 0)
+            return true;
+        else
+            return false;
+    }
+    public static function checkMove($moveName, $pokemonName)
+    {
+        $conn = self::connection();
+        $sql = "SELECT M.* 
+                FROM Mossa M 
+                    INNER JOIN IMPARA I ON (I.NomeMossa = M.Nome) 
+                    INNER JOIN Pokemon P ON (I.NomePokemon = P.NomePokemon) 
+                WHERE P.NomePokemon ='". $pokemonName . "' AND M.Nome = ".$moveName;
+
+        $result = $conn->query($sql);
+        if($result -> num_rows > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public static function checkAbility($abilityName, $pokemonName)
+    {
+        $conn = self::connection();
+        $sql = "SELECT P.NomePokemon 
+            FROM Pokemon P 
+                INNER JOIN Sviluppa AS S ON (P.NomePokemon = S.NomePokemon) 
+                INNER JOIN Abilità AS A ON (A.Nome = S.NomeAbilità) 
+            WHERE S.NomeAbilità = ? AND P.NomePokemon = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $abilityName, $pokemonName);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Verifica se ci sono righe restituite
+        if ($result->num_rows > 0) {
+            $stmt->close();
+            return true;
+        } else {
+            $stmt->close();
+            return false;
+        }
+
+
+    }
 }

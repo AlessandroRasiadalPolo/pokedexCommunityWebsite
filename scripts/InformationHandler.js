@@ -6,7 +6,7 @@ function createOrUpdateTable(tableType, data) {
         // Crea la nuova tabella in base al tipo specificato
         if (tableType === "pokemon")
             createPokemonTable(data);
-            else if (tableType === "item")
+        else if (tableType === "item")
             createItemTable(data);
         else if (tableType === "move")
             createMoveTable(data);
@@ -15,21 +15,23 @@ function createOrUpdateTable(tableType, data) {
         currentTableType = tableType;
         tableCreated = true;
     }
-        // Se la tabella è già stata creata e ha lo stesso tipo, aggiorna semplicemente i dati
-        if (tableType === "pokemon")
-                updateTable(data);
-            else if (tableType === "item")
-                updateItems(data);
-            else if (tableType === "move")
-                updateMoves(data);
+    // Se la tabella è già stata creata e ha lo stesso tipo, aggiorna semplicemente i dati
+    if (tableType === "pokemon")
+        updateTable(data);
+    else if (tableType === "item")
+        updateItems(data);
+    else if (tableType === "move")
+        updateMoves(data);
 }
+
 function removeTableIfExists() {
     let existingTable = document.getElementById("tableHint");
     if (existingTable) {
         existingTable.parentNode.removeChild(existingTable);
     }
 }
-function createDefaultTable(){
+
+function createDefaultTable() {
 
     let table = document.createElement("table");
     table.style.border = "1px solid white";
@@ -68,6 +70,7 @@ function createPokemonTable(data) {
     document.getElementById("bodyPage").appendChild(div);
     document.getElementById("tableHint").addEventListener("click", clickPokemon);
 }
+
 function createItemTable(data) {
     let div = document.createElement("div");
     div.style.width = "100%";
@@ -93,6 +96,7 @@ function createItemTable(data) {
     document.getElementById("bodyPage").appendChild(div);
     document.getElementById("tableHint").addEventListener("click", clickItem);
 }
+
 function createMoveTable(data) {
     let div = document.createElement("div");
     div.style.width = "100%";
@@ -120,21 +124,38 @@ function createMoveTable(data) {
 }
 
 
-function clickMove(event){
+function clickMove(event) {
     let row = event.target.closest("tr");
     if (row && row.rowIndex !== 0) {
         let cells = row.getElementsByTagName("td");
         let lastInput = document.getElementById(lastInputId);
         if (lastInput) {
             lastInput.value = cells[0].textContent;
+            // Aggiorna l'oggetto newPokemon con la mossa corrispondente
+            switch (lastInput.id) {
+                case "move1":
+                    pokemons[clickedButton].moves.move1 = lastInput.value;
+                    break;
+                case "move2":
+                    pokemons[clickedButton].moves.move2 = lastInput.value;
+                    break;
+                case "move3":
+                    pokemons[clickedButton].moves.move3 = lastInput.value;
+                    break;
+                case "move4":
+                    pokemons[clickedButton].moves.move4 = lastInput.value;
+                    break;
+            }
         }
     }
 }
-function clickItem(event){
+
+function clickItem(event) {
     let row = event.target.closest("tr");
     if (row && row.rowIndex !== 0) {
         let cells = row.getElementsByTagName("td");
-        document.getElementById("itemName").value =  cells[0].textContent;
+        document.getElementById("itemName").value = cells[0].textContent;
+        pokemons[clickedButton].item = cells[0].textContent;
     }
 }
 
@@ -143,9 +164,9 @@ function updateTable(data) {
     tableBody.innerHTML = ""; // Pulisci il corpo della tabella
     // Aggiungi i nuovi dati alla tabella
     iconrow = "https://play.pokemonshowdown.com/sprites/dex/";
-    data.forEach(function(pokemon) {
+    data.forEach(function (pokemon) {
         let row = tableBody.insertRow();
-        newurl = iconrow+ pokemon.pokemonName.toLowerCase() + ".png";
+        newurl = iconrow + pokemon.pokemonName.toLowerCase() + ".png";
         row.innerHTML = "<td>" +
             "<img src=\"" + newurl + "\" class = 'imgTable'>\n</td>" +
             "<td>" + pokemon.pokemonName + "</td>" +
@@ -162,30 +183,68 @@ function updateTable(data) {
 
 }
 
-function updateMoves(data){
+function salvaTeam() {
+    // Crea una nuova richiesta XMLHttpRequest
+    let check = checkPokemon(pokemons);
+    if (check !== "")
+        alert(check);
+    else {
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "../pages/methods.php", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                window.location.reload();
+            }
+        };
+
+        // Converti l'oggetto JavaScript in formato JSON
+        var jsonData = JSON.stringify(pokemons);
+
+        // Invia la richiesta con i dati JSON
+        xhr.send(jsonData);
+    }
+}
+
+function updateTeamCount(count) {
+    if (count === 6) {
+        document.getElementById("buttonAddPokemon").style.display = "none";
+        let newButton = document.createElement("button");
+        newButton.className = "buttonList";
+        newButton.addEventListener("click", function () {
+            salvaTeam();
+        });
+        document.getElementById("pokemonList").appendChild(newButton);
+    }
+}
+
+function updateMoves(data) {
     let tableBody = document.getElementById("tableHint").getElementsByTagName("tbody")[0];
     tableBody.innerHTML = ""; // Pulisci il corpo della tabella
-    data.forEach(function(move) {
+    data.forEach(function (move) {
         let row = tableBody.insertRow();
         row.innerHTML = "<td>" + move.Nome + "</td>" +
             "<td>" + move.Effetto + "</td>" +
             "<td>" + parseInt(move.PP) + "</td>" +
             "<td>" + move.Tipo + "</td>" +
-            "<td>" +move.power + "</td>" +
-            "<td>" + move.accuracy  + "</td>" +
-            "<td>" + move.priority  + "</td>" +
+            "<td>" + move.power + "</td>" +
+            "<td>" + move.accuracy + "</td>" +
+            "<td>" + move.priority + "</td>" +
             "<td>" + move.category + "</td>";
 
-        row.addEventListener("click", function(event) {
+        row.addEventListener("click", function (event) {
             clickMove(event); // Chiamata alla funzione clickMove
         });
     });
 
 }
+
 function updateItems(data) {
     let tableBody = document.getElementById("tableHint").getElementsByTagName("tbody")[0];
     tableBody.innerHTML = ""; // Pulisci il corpo della tabella
-    data.forEach(function(item) {
+    data.forEach(function (item) {
         let row = tableBody.insertRow();
         row.innerHTML = "<td>" + item.Nome + "</td>" +
             "<td>" + item.Effetto + "</td>";
@@ -193,56 +252,61 @@ function updateItems(data) {
 
 }
 
+
 // Funzione per aggiungere un nuovo Pokémon alla squadra
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
-    document.getElementById("buttonAddPokemon").addEventListener("click", function() {
-        if(pokemons.length !== 6) {
-            // Aggiungi un nuovo Pokémon all'array
-            let newPokemon = {
-                name: document.getElementById("nomePokemonTxt").value,
-                ability: document.getElementById("abilityName").value,
-                image: document.getElementById("imageId").src,
-                ps: parseInt(document.getElementById("hpDiv").style.width),
-                atk: parseInt(document.getElementById("atkDiv").style.width),
-                def: parseInt(document.getElementById("defDiv").style.width),
-                SAtk: parseInt(document.getElementById("spaDiv").style.width),
-                SDef: parseInt(document.getElementById("spdDiv").style.width),
-                spe: parseInt(document.getElementById("speDiv").style.width),
-                move1: document.getElementById("move1").value,
-                move2: document.getElementById("move2").value,
-                move3: document.getElementById("move3").value,
-                move4: document.getElementById("move4").value,
-                item: document.getElementById("itemName").value
+    document.getElementById("buttonAddPokemon").addEventListener("click", function () {
+        // Aggiungi un nuovo Pokémon all'array
+        let newPokemon = {
+            name: document.getElementById("nomePokemonTxt").value,
+            ability: document.getElementById("abilityName").value,
+            image: document.getElementById("imageId").src,
+            ps: parseInt(document.getElementById("hpDiv").style.width),
+            atk: parseInt(document.getElementById("atkDiv").style.width),
+            def: parseInt(document.getElementById("defDiv").style.width),
+            SAtk: parseInt(document.getElementById("spaDiv").style.width),
+            SDef: parseInt(document.getElementById("spdDiv").style.width),
+            spe: parseInt(document.getElementById("speDiv").style.width),
+            primaryType: document.getElementById("primaryType").src,
+            secondaryType: document.getElementById("secondaryType").src,
+            moves:
+                {
+                    move1: document.getElementById("move1").value,
+                    move2: document.getElementById("move2").value,
+                    move3: document.getElementById("move3").value,
+                    move4: document.getElementById("move4").value
+                },
 
-            };
-            pokemons.push(newPokemon);
+            item: document.getElementById("itemName").value
 
-            // Crea un nuovo pulsante per il nuovo Pokémon
-            let newButton = document.createElement("button");
-            newButton.className = "buttonList";
-            newButton.textContent = newPokemon.name;
+        };
+        pokemons.push(newPokemon);
 
-            // Aggiungi l'indice del Pokémon come attributo personalizzato
-            newButton.dataset.index = pokemons.length - 1;
+        // Crea un nuovo pulsante per il nuovo Pokémon
+        let newButton = document.createElement("button");
+        newButton.className = "buttonList";
+        newButton.textContent = newPokemon.name;
 
-            // Aggiungi l'evento click al nuovo pulsante
-            newButton.addEventListener("click", function() {
-                let pokemonIndex = parseInt(this.dataset.index);
-                let pokemon = pokemons[pokemonIndex];
-                updatePokemonDetails(pokemon);
-                console.log("Pokemon cliccato:", pokemonIndex);
-                clickedButton = pokemonIndex;
-            });
+        // Aggiungi l'indice del Pokémon come attributo personalizzato
+        newButton.dataset.index = pokemons.length - 1;
 
-            // Inserisci il nuovo pulsante prima del pulsante "Aggiungi Pokémon"
-            let addButton = document.getElementById("buttonAddPokemon");
-            addButton.parentNode.insertBefore(newButton, addButton);
-        }
-        else
-            document.getElementById("buttonAddPokemon").style.display = "none";
+        // Aggiungi l'evento click al nuovo pulsante
+        newButton.addEventListener("click", function () {
+            let pokemonIndex = parseInt(this.dataset.index);
+            let pokemon = pokemons[pokemonIndex];
+            updatePokemonDetails(pokemon);
+            console.log("Pokemon cliccato:", pokemonIndex);
+            clickedButton = pokemonIndex;
+        });
+
+        // Inserisci il nuovo pulsante prima del pulsante "Aggiungi Pokémon"
+        let addButton = document.getElementById("buttonAddPokemon");
+        addButton.parentNode.insertBefore(newButton, addButton);
+        updateTeamCount(pokemons.length);
     });
 });
+
 function updatePokemonDetails(pokemon) {
     document.getElementById("hpDiv").style.width = pokemon.ps + "px";
     document.getElementById("atkDiv").style.width = pokemon.atk + "px";
@@ -253,6 +317,15 @@ function updatePokemonDetails(pokemon) {
     document.getElementById("imageId").src = pokemon.image;
     document.getElementById("nomePokemonTxt").value = pokemon.name;
     document.getElementById("abilityName").value = pokemon.ability;
+    document.getElementById("itemName").value = pokemon.item;
+    document.getElementById("move1").value = pokemon.moves.move1;
+    document.getElementById("move2").value = pokemon.moves.move2;
+    document.getElementById("move3").value = pokemon.moves.move3;
+    document.getElementById("move4").value = pokemon.moves.move4;
+    document.getElementById("primaryType").src = pokemon.primaryType;
+
+    if (pokemon.secondaryType !== "null")
+        document.getElementById("secondaryType").src = pokemon.secondaryType;
 }
 
 function clickPokemon(event) {
@@ -268,18 +341,13 @@ function clickPokemon(event) {
         newPokemon.SDef = parseInt(cells[9].textContent);
         newPokemon.spe = parseInt(cells[10].textContent);
         newPokemon.name = cells[1].textContent.toLowerCase();
-        newPokemon.image = "https://www.smogon.com/dex/media/sprites/xy/" + newPokemon.name  + ".gif";
+        newPokemon.image = "https://www.smogon.com/dex/media/sprites/xy/" + newPokemon.name + ".gif";
         newPokemon.ability = cells[2].textContent;
+        newPokemon.moves = {move1: "", move2: "", move3: "", move4: ""};
+        newPokemon.primaryType = "https://play.pokemonshowdown.com/sprites/types/" + cells[3].textContent + ".png";
+        newPokemon.secondaryType = "https://play.pokemonshowdown.com/sprites/types/" + cells[4].textContent + ".png";
 
-        document.getElementById("hpDiv").style.width = newPokemon.ps + "px";
-        document.getElementById("atkDiv").style.width = newPokemon.atk + "px";
-        document.getElementById("defDiv").style.width = newPokemon.def + "px";
-        document.getElementById("spaDiv").style.width = newPokemon.SAtk + "px";
-        document.getElementById("spdDiv").style.width = newPokemon.SDef + "px";
-        document.getElementById("speDiv").style.width = newPokemon.spe + "px";
-        document.getElementById("imageId").src = newPokemon.image;
-        document.getElementById("nomePokemonTxt").value = newPokemon.name;
-        document.getElementById("abilityName").value = newPokemon.ability;
+        updatePokemonDetails(newPokemon);
         pokemons[clickedButton] = newPokemon;
         document.getElementById("pokemonList").querySelectorAll("button")[clickedButton].textContent = newPokemon.name;
     }

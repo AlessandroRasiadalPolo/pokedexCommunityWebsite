@@ -14,6 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src="../scripts/DataSaverHandler.js"></script>
     <script src="../scripts/InformationHandler.js"></script>
+    <script src = ../scripts/checkInformation.js></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -44,6 +45,11 @@
 
 <section id="bodyPage">
 
+    <div id = "teamName">
+        <label for="teamNameTxt" id = "labelTeamName">Nome del team</label>
+        <input type="text" name="" id="teamNameTxt">
+    </div>
+
 <div id = "pokemonList" style="display: flex">
     <button class = "buttonList" id = "buttonAddPokemon"><i class="fas fa-plus-circle"></i></button>
 </div>
@@ -58,6 +64,10 @@
         </div>
     </div>
     <div class = "abilities-items">
+        <div class = "types">
+            <div ><img src="https://play.pokemonshowdown.com/sprites/types/Grass.png" alt="" class = "typeImage" id = "primaryType"></div>
+            <div><img src="https://play.pokemonshowdown.com/sprites/types/Poison.png" alt="" class = "typeImage" id = "secondaryType"></div>
+        </div>
         <div class = "abilityDiv">
             <label for="">Ability</label>
             <input type="text" name="" id="abilityName" value = "Overgrow" class = "abiliyInput">
