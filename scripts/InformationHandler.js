@@ -248,58 +248,6 @@ function updateItems(data) {
 }
 
 
-// Funzione per aggiungere un nuovo Pokémon alla squadra
-document.addEventListener("DOMContentLoaded", function () {
-
-    document.getElementById("buttonAddPokemon").addEventListener("click", function () {
-        // Aggiungi un nuovo Pokémon all'array
-        let newPokemon = {
-            name: document.getElementById("nomePokemonTxt").value,
-            ability: document.getElementById("abilityName").value,
-            image: document.getElementById("imageId").src,
-            ps: parseInt(document.getElementById("hpDiv").style.width),
-            atk: parseInt(document.getElementById("atkDiv").style.width),
-            def: parseInt(document.getElementById("defDiv").style.width),
-            SAtk: parseInt(document.getElementById("spaDiv").style.width),
-            SDef: parseInt(document.getElementById("spdDiv").style.width),
-            spe: parseInt(document.getElementById("speDiv").style.width),
-            primaryType: document.getElementById("primaryType").src,
-            secondaryType: document.getElementById("secondaryType").src,
-            moves:
-                {
-                    move1: document.getElementById("move1").value,
-                    move2: document.getElementById("move2").value,
-                    move3: document.getElementById("move3").value,
-                    move4: document.getElementById("move4").value
-                },
-
-            item: document.getElementById("itemName").value
-
-        };
-        pokemons.push(newPokemon);
-
-        // Crea un nuovo pulsante per il nuovo Pokémon
-        let newButton = document.createElement("button");
-        newButton.className = "buttonList";
-        newButton.textContent = newPokemon.name;
-
-        newButton.dataset.index = pokemons.length - 1;
-
-
-        newButton.addEventListener("click", function () {
-            let pokemonIndex = parseInt(this.dataset.index);
-            let pokemon = pokemons[pokemonIndex];
-            updatePokemonDetails(pokemon);
-            console.log("Pokemon cliccato:", pokemonIndex);
-            clickedButton = pokemonIndex;
-        });
-
-        let addButton = document.getElementById("buttonAddPokemon");
-        addButton.parentNode.insertBefore(newButton, addButton);
-        updateTeamCount(pokemons.length);
-    });
-});
-
 function updatePokemonDetails(pokemon) {
     document.getElementById("hpDiv").style.width = pokemon.ps + "px";
     document.getElementById("atkDiv").style.width = pokemon.atk + "px";
