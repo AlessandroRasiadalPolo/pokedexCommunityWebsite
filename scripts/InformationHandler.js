@@ -1,9 +1,8 @@
 function createOrUpdateTable(tableType, data) {
-    // Controlla se la tabella è già stata creata
+
     if (!tableCreated || currentTableType !== tableType) {
-        // Rimuovi la tabella corrente, se presente
+
         removeTableIfExists();
-        // Crea la nuova tabella in base al tipo specificato
         if (tableType === "pokemon")
             createPokemonTable(data);
         else if (tableType === "item")
@@ -11,7 +10,6 @@ function createOrUpdateTable(tableType, data) {
         else if (tableType === "move")
             createMoveTable(data);
 
-        // Imposta il tipo di tabella corrente e il flag a true
         currentTableType = tableType;
         tableCreated = true;
     }
@@ -184,7 +182,7 @@ function updateTable(data) {
 }
 
 function salvaTeam() {
-    // Crea una nuova richiesta XMLHttpRequest
+
     let check = checkPokemon(pokemons);
     if (check !== "")
         alert(check);
@@ -200,10 +198,8 @@ function salvaTeam() {
             }
         };
 
-        // Converti l'oggetto JavaScript in formato JSON
         var jsonData = JSON.stringify(pokemons);
 
-        // Invia la richiesta con i dati JSON
         xhr.send(jsonData);
     }
 }
@@ -243,7 +239,7 @@ function updateMoves(data) {
 
 function updateItems(data) {
     let tableBody = document.getElementById("tableHint").getElementsByTagName("tbody")[0];
-    tableBody.innerHTML = ""; // Pulisci il corpo della tabella
+    tableBody.innerHTML = "";
     data.forEach(function (item) {
         let row = tableBody.insertRow();
         row.innerHTML = "<td>" + item.Nome + "</td>" +
@@ -288,10 +284,9 @@ document.addEventListener("DOMContentLoaded", function () {
         newButton.className = "buttonList";
         newButton.textContent = newPokemon.name;
 
-        // Aggiungi l'indice del Pokémon come attributo personalizzato
         newButton.dataset.index = pokemons.length - 1;
 
-        // Aggiungi l'evento click al nuovo pulsante
+
         newButton.addEventListener("click", function () {
             let pokemonIndex = parseInt(this.dataset.index);
             let pokemon = pokemons[pokemonIndex];
@@ -300,7 +295,6 @@ document.addEventListener("DOMContentLoaded", function () {
             clickedButton = pokemonIndex;
         });
 
-        // Inserisci il nuovo pulsante prima del pulsante "Aggiungi Pokémon"
         let addButton = document.getElementById("buttonAddPokemon");
         addButton.parentNode.insertBefore(newButton, addButton);
         updateTeamCount(pokemons.length);

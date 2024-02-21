@@ -105781,7 +105781,13 @@ CREATE TABLE `pokemonsquadra` (
   `Mossa1` varchar(100) NOT NULL,
   `Mossa2` varchar(100) NOT NULL,
   `Mossa3` varchar(100) NOT NULL,
-  `Mossa4` varchar(100) NOT NULL
+  `Mossa4` varchar(100) NOT NULL,
+  PS int NOT NULL,
+  ATK INT NOT NULL,
+  DEF INT NOT NULL,
+  SATK INT NOT NULL,
+  SDEF INT NOT NULL,
+  SPE INT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
