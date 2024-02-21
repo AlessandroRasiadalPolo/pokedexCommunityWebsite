@@ -284,27 +284,42 @@ class DB
     public static function saveTeam($nomeTeam, $pokemons)
     {
         $conn = self::connection();
-        $sql = "INSERT INTO Squadra(NomeSquadra) VALUES (?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $nomeTeam);
+        $sqlSquadra = "INSERT INTO Squadra(NomeSquadra) VALUES (?)";
+        $stmtSquadra = $conn->prepare($sqlSquadra);
+        $stmtSquadra->bind_param("s", $nomeTeam);
 
-        if($stmt->execute()){
-            $sql = "INSERT INTO PokemonSquadra(TeamName, PokemonName, Strumento, Abilità, Mossa1, Mossa2, Mossa3, Mossa4) VALUES (?,?,?,?,?,?,?,?)";
-            $stmtTeam = $conn->prepare($sql);
-            foreach($pokemons as $p){
-                $stmtTeam->bind_param("ssssssssiiiiii", $p[$nomeTeam],
-                    $p["nome"], $p['item'], $p['ability'],
+        if ($stmtSquadra->execute()) {
+            $sqlPokemon = "INSERT INTO PokemonSquadra(TeamName, PokemonName, Strumento, Abilità, Mossa1, Mossa2, Mossa3, Mossa4, PS, ATK, DEF, SATK, SDEF, SPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmtPokemon = $conn->prepare($sqlPokemon);
+
+            foreach ($pokemons as $p) {
+                $stmtPokemon->bind_param("ssssssssiiiiii", $nomeTeam,
+                    $p["name"], $p['item'], $p['ability'],
                     $p['moves']['move1'], $p['moves']['move2'], $p['moves']["move3"], $p['moves']["move4"],
-                    $p['ps'], $p['atk'], $p['def'], $p['sAtk'], $p['SDef'], $p['spe']
+                    $p['ps'], $p['atk'], $p['def'], $p['SAtk'], $p['SDef'], $p['spe']
                 );
-                $stmtTeam->execute($sql);
+
+                // Esegui lo statement e controlla se ci sono errori
+                if (!$stmtPokemon->execute()) {
+                    // Se ci sono errori, stampa il messaggio di errore e interrompi il ciclo
+                    $error =  $stmtPokemon->error;
+                    echo $error;
+                }
             }
-            $sql = "INSERT INTO Forma(IdUtente, NomeSquadra) VALUES(?,?)";
-            $stmtTeam = $conn->prepare($sql);
-            $stmtTeam->bind_param("ss", $_COOKIE['username'], $nomeTeam);
-            $stmtTeam->execute($sql);
+
+            $sqlForma = "INSERT INTO Forma(IdUtente, NomeSquadra) VALUES(?, ?)";
+            $stmtForma = $conn->prepare($sqlForma);
+            $stmtForma->bind_param("ss", $_COOKIE['username'], $nomeTeam);
+            $stmtForma->execute();
+
+            $stmtSquadra->close();
+            $stmtPokemon->close();
+            $stmtForma->close();
+
             return true;
         }
+
         return false;
     }
+
 }
