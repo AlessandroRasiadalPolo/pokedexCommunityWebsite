@@ -15,6 +15,7 @@
     <script src="../scripts/DataSaverHandler.js"></script>
     <script src="../scripts/InformationHandler.js"></script>
     <script src = ../scripts/checkInformation.js></script>
+    <script src = "../scripts/selectedTeamInterface.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -45,80 +46,73 @@
 
 <section id="bodyPage">
 
-    <div id = "teamName">
-        <label for="teamNameTxt" id = "labelTeamName">Nome del team</label>
-        <input type="text" name="" id="teamNameTxt">
-    </div>
+    <h2>I tuoi team</h2>
+    <div class = "teamDiv">
+        <h3 class = "teamTitle">Titolo del team</h3>
+        <div class = "members">
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "pokemon">
+            </div>
 
-<div id = "pokemonList" style="display: flex">
-    <button class = "buttonList" id = "buttonAddPokemon"><i class="fas fa-plus-circle"></i></button>
-</div>
-<div class = "divChart">
-    <div class = "imgPokemonDiv">
-        
-        <div class = "imgPokemon">
-            <img src="https://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif" class = "pokemonImg" alt="" id = "imageId">
-        </div>
-        <div class = "pokemonName" style="">
-            <input type="text" id="nomePokemonTxt" class ="pokemonName" onkeyup="showPokemon(this.value)" value = "bulbasaur">
-        </div>
-    </div>
-    <div class = "abilities-items">
-        <div class = "types">
-            <div ><img src="https://play.pokemonshowdown.com/sprites/types/Grass.png" alt="" class = "typeImage" id = "primaryType"></div>
-            <div><img src="https://play.pokemonshowdown.com/sprites/types/Poison.png" alt="" class = "typeImage" id = "secondaryType"></div>
-        </div>
-        <div class = "abilityDiv">
-            <label for="">Ability</label>
-            <input type="text" name="" id="abilityName" value = "Overgrow" class = "abiliyInput">
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/charizard.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/brute-bonnet.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/zekrom.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/necrozma.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/ursaluna.png" alt="" class = "pokemon">
+            </div>
 
         </div>
-        <div class = "itemDiv">
-            <label for="">Item</label>
-            <input type="text" name="" id="itemName" class = "itemInput" onkeyup="showItem(this.value)">
-        </div>
+        <button class = "teamButton">Modifica</button>
+        <button class = "teamButton">Elimina</button>
+
     </div>
-    <div class = "moveSet">
-        <div class = "move">
-            <input type="text" name="" id="move1" onkeyup="showMoves(this.id, this.value)">
+    <div class = "teamDiv">
+        <h3 class = "teamTitle">Titolo del team</h3>
+        <div class = "members">
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png" alt="" class = "pokemon">
+            </div>
+
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/charizard.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/brute-bonnet.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/zekrom.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/necrozma.png" alt="" class = "pokemon">
+            </div>
+            <div class = "pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class = "pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/ursaluna.png" alt="" class = "pokemon">
+            </div>
         </div>
-        <div class = "move">
-            <input type="text" name="" id="move2" onkeyup="showMoves(this.id,this.value)">
-        </div>
-        <div class="move">
-            <input type="text" name="" id="move3" onkeyup="showMoves(this.id,this.value)">
-        </div>
-        <div class="move">
-            <input type="text" name="" id="move4" onkeyup="showMoves(this.id, this.value)">
-        </div>
+        <button class = "teamButton">Modifica</button>
     </div>
-    <div class = "divStatistics">
-        <div class = "statsContainer">
-            <label class = "statsName" for="">HP</label>
-            <div class = "stats" id = "hpDiv"></div>
-        </div>
-        <div class = "statsContainer">
-            <label class = "statsName" for="">ATK</label>
-            <div class = "stats" id = "atkDiv"></div>
-        </div>
-        <div class = "statsContainer">
-            <label class = "statsName" for="">SPE</label>
-            <div class = "stats" id = "speDiv"></div>
-        </div>
-        <div class = "statsContainer">
-            <label class = "statsName" for="">SPD</label>
-            <div class = "stats" id = "spdDiv"></div>
-        </div>
-        <div class = "statsContainer">
-            <label class = "statsName" for="">DEF</label>
-            <div class = "stats" id = "defDiv"></div>
-        </div>
-        <div class = "statsContainer">
-            <label class = "statsName" for="">SATK</label>
-            <div class = "stats" id = "spaDiv"></div>
-        </div>
-    </div>
-</div>
+    <button id = "newTeamButton" onclick="changeToSelectedInterface()"><i class = "fas fa-plus-circle"></i>New Team</button>
 
 </section>
 
