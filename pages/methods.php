@@ -28,31 +28,13 @@ if($queryMoveName){
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Da Javascript mi arrivano dei dati in formato JSON
     $pokemons = json_decode(file_get_contents("php://input"), true);
-
-    //Devo salvare ogni pokemon all'interno della squadra del database
-    foreach ($pokemons as $pokemon) {
-        $nome = $pokemon['name'];
-        $ability = $pokemon['ability'];
-        $livello = $pokemon['livello'];
-        $image = $pokemon['image'];
-        $ps = $pokemon['ps'];
-        $atk = $pokemon['atk'];
-        $def = $pokemon['def'];
-        $spd = $pokemon['SDef'];
-        $satk = $pokemon['SAtk'];
-        $spe = $pokemon['spe'];
-        $firstMove = $pokemon['moves']['move1'];
-        $secondMove = $pokemon['moves']['move2'];
-        $thirdMove = $pokemon['moves']['move3'];
-        $fourthMove = $pokemon['moves']['move4'];
-
+    $nomeTeam = isset($_GET['nomeTeam']) ? $_GET['nomeTeam'] : '';
+        if(DB::saveTeam($nomeTeam, $pokemons))
+            echo "Dati ricevuti correttamente.";
+        else {
+            // Se la richiesta non è di tipo POST, restituisci un messaggio di errore
+            echo "Metodo non consentito.";
     }
-
-    // Restituisci una risposta al client
-    echo "Dati ricevuti correttamente.";
-} else {
-    // Se la richiesta non è di tipo POST, restituisci un messaggio di errore
-    echo "Metodo non consentito.";
 }
 
 $checkPokemon = isset($_GET['checkPokemon']) ? $_GET['checkPokemon'] : "";

@@ -188,8 +188,8 @@ function salvaTeam() {
         alert(check);
     else {
         var xhr = new XMLHttpRequest();
-
-        xhr.open("POST", "../pages/methods.php", true);
+        var url = "../pages/methods.php?nomeTeam=" + document.getElementById("teamNameTxt").value;
+        xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
 
         xhr.onreadystatechange = function () {
@@ -199,7 +199,6 @@ function salvaTeam() {
         };
 
         var jsonData = JSON.stringify(pokemons);
-
         xhr.send(jsonData);
     }
 }

@@ -292,12 +292,19 @@ class DB
             $sql = "INSERT INTO PokemonSquadra(TeamName, PokemonName, Strumento, Abilità, Mossa1, Mossa2, Mossa3, Mossa4) VALUES (?,?,?,?,?,?,?,?)";
             $stmtTeam = $conn->prepare($sql);
             foreach($pokemons as $p){
-                $stmt->bind_param("ssssssssiiiiii", $p[$nomeTeam],
+                $stmtTeam->bind_param("ssssssssiiiiii", $p[$nomeTeam],
                     $p["nome"], $p['item'], $p['ability'],
                     $p['moves']['move1'], $p['moves']['move2'], $p['moves']["move3"], $p['moves']["move4"],
                     $p['ps'], $p['atk'], $p['def'], $p['sAtk'], $p['SDef'], $p['spe']
                 );
+                $stmtTeam->execute($sql);
             }
+            $sql = "INSERT INTO Forma(IdUtente, NomeSquadra) VALUES(?,?)";
+            $stmtTeam = $conn->prepare($sql);
+            $stmtTeam->bind_param("ss", $_COOKIE['username'], $nomeTeam);
+            $stmtTeam->execute($sql);
+            return true;
         }
+        return false;
     }
 }
