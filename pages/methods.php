@@ -30,10 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pokemons = json_decode(file_get_contents("php://input"), true);
     $nomeTeam = isset($_GET['nomeTeam']) ? $_GET['nomeTeam'] : '';
         if(DB::saveTeam($nomeTeam, $pokemons))
-            echo "Dati ricevuti correttamente.";
+            echo "true";
         else {
             // Se la richiesta non è di tipo POST, restituisci un messaggio di errore
-            echo "Metodo non consentito.";
+            echo "false";
     }
 }
 

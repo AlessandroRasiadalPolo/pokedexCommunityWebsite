@@ -284,6 +284,8 @@ class DB
     public static function saveTeam($nomeTeam, $pokemons)
     {
         $conn = self::connection();
+        $conn->autocommit(FALSE); // Disabilita l'autocommit per consentire il controllo manuale delle transazioni
+
         $sqlSquadra = "INSERT INTO Squadra(NomeSquadra) VALUES (?)";
         $stmtSquadra = $conn->prepare($sqlSquadra);
         $stmtSquadra->bind_param("s", $nomeTeam);
@@ -301,9 +303,15 @@ class DB
 
                 // Esegui lo statement e controlla se ci sono errori
                 if (!$stmtPokemon->execute()) {
-                    // Se ci sono errori, stampa il messaggio di errore e interrompi il ciclo
-                    $error =  $stmtPokemon->error;
+                    // Se ci sono errori, stampa il messaggio di errore
+                    $error = $stmtPokemon->error;
                     echo $error;
+                    // Rollback della transazione e uscita dalla funzione
+                    $conn->rollback();
+                    $stmtSquadra->close();
+                    $stmtPokemon->close();
+                    $conn->close();
+                    return false;
                 }
             }
 
@@ -312,14 +320,25 @@ class DB
             $stmtForma->bind_param("ss", $_COOKIE['username'], $nomeTeam);
             $stmtForma->execute();
 
+            // Commit della transazione solo se tutte le operazioni hanno avuto successo
+            $conn->commit();
+
             $stmtSquadra->close();
             $stmtPokemon->close();
             $stmtForma->close();
+            $conn->close();
 
             return true;
         }
 
+        // Se la query per l'inserimento del team non ha avuto successo
+        // Rollback della transazione e chiusura delle connessioni
+        $conn->rollback();
+        $stmtSquadra->close();
+        $conn->close();
+
         return false;
     }
+
 
 }

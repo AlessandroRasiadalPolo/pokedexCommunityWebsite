@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class = "pokemonDescription">
-                <img src="https://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif"" alt="" class = "imgBadge">
+                    <img src="https://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif"" alt="" class = "imgBadge">
                 <div>
                     <p>Mossa 1</p>
                     <p>Mossa2</p>
