@@ -182,12 +182,16 @@ function updateTable(data) {
 }
 
 function salvaTeam() {
+    var nomeTeam = document.getElementById("teamNameTxt").value;
+    if(nomeTeam === "" || checkTeamName(nomeTeam))
+        alert("Controlla il nome del Team!");
 
     let check = checkPokemon(pokemons);
     if (check !== "")
         alert(check);
     else {
         var xhr = new XMLHttpRequest();
+
         var url = "../pages/methods.php?nomeTeam=" + document.getElementById("teamNameTxt").value;
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
@@ -197,7 +201,7 @@ function salvaTeam() {
                 if(this.responseText === "true")
                     window.location.reload();
                 else
-                    alert("Qualcosa è andato storto");
+                    alert("Qualcosa è andato storto, riprova");
             }
         };
 

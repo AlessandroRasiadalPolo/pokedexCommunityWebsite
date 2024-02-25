@@ -105,6 +105,7 @@ class DB
             return $badges;
     }
 
+
     public function getPokemonHint($nome)
     {
         $conn = self::connection();
@@ -284,8 +285,6 @@ class DB
     public static function saveTeam($nomeTeam, $pokemons)
     {
         $conn = self::connection();
-        $conn->autocommit(FALSE); // Disabilita l'autocommit per consentire il controllo manuale delle transazioni
-
         $sqlSquadra = "INSERT INTO Squadra(NomeSquadra) VALUES (?)";
         $stmtSquadra = $conn->prepare($sqlSquadra);
         $stmtSquadra->bind_param("s", $nomeTeam);
@@ -301,13 +300,11 @@ class DB
                     $p['ps'], $p['atk'], $p['def'], $p['SAtk'], $p['SDef'], $p['spe']
                 );
 
-                // Esegui lo statement e controlla se ci sono errori
+                // Eseguo lo statement e controllo se ci sono errori
                 if (!$stmtPokemon->execute()) {
-                    // Se ci sono errori, stampa il messaggio di errore
+                    // Se ci sono errori, stampo il messaggio di errore
                     $error = $stmtPokemon->error;
                     echo $error;
-                    // Rollback della transazione e uscita dalla funzione
-                    $conn->rollback();
                     $stmtSquadra->close();
                     $stmtPokemon->close();
                     $conn->close();
@@ -319,9 +316,6 @@ class DB
             $stmtForma = $conn->prepare($sqlForma);
             $stmtForma->bind_param("ss", $_COOKIE['username'], $nomeTeam);
             $stmtForma->execute();
-
-            // Commit della transazione solo se tutte le operazioni hanno avuto successo
-            $conn->commit();
 
             $stmtSquadra->close();
             $stmtPokemon->close();
@@ -338,6 +332,51 @@ class DB
         $conn->close();
 
         return false;
+    }
+
+    public static function checkTeamName($checkTeamName)
+    {
+        $conn = self::connection();
+        $sql = "Select * from Squadra Where NomeSquadra = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $checkTeamName);
+        if($stmt->execute() && $stmt->get_result()->num_rows > 0){
+            $stmt->close();
+            $conn->close();
+            return true;
+        }
+        else
+        {
+            $stmt->close();
+            $conn->close();
+            return false;
+        }
+
+
+    }
+
+    public static function getUserTeams($autore)
+    {
+        $conn = self::connection();
+        $sql = "SELECT S.NomeSquadra, P.* FROM Squadra S INNER JOIN PokemonSquadra P ON(S.NomeSquadra = P.TeamName) WHERE S.Autore = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $autore);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $teams = array();
+
+        while ($row = $result->fetch_assoc()) {
+            $teamName = $row['NomeSquadra'];
+            unset($row['NomeSquadra']);
+            $teams[$teamName]['teamName'] = $teamName;
+            $teams[$teamName]['pokemon'][] = $row;
+        }
+
+        $stmt->close();
+
+        return json_encode($teams);
+
     }
 
 

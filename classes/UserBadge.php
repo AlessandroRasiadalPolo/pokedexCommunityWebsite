@@ -135,7 +135,7 @@ class UserBadge{
         $this->pokemon4 = $pokemon4;
     }
 
-    public function generateBadge()
+    public function generateBadge($pokemons)
     {
         return '<div class = "userBadge">
         <img src=""  id = "imgAnimation1-1" class = "pokemonAnimation" alt="">
@@ -205,6 +205,29 @@ class UserBadge{
     </div>';
 
 
+    }
+
+    public static function generateTeam($team)
+    {
+        //Al posto di una grande stringa mi conviene concatenare i vari passaggi e dopo ritornarlo
+
+        $html = '<div class="teamDiv">
+            <h3 class="teamTitle">'. $team["NomeSquadra"] .'</h3>
+            <div class="members">';
+
+        foreach ($team as $pokemonName) {
+            // Aggiungi il tag HTML per l'immagine del Pokémon
+            $html .= '<div class="pokemonContainer">
+                <img src="../images/escaBallSprite.png" alt="" class="pokeball">
+                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/' . $pokemonName . '.png" class="pokemon">
+            </div>';
+        }
+
+        $html .= '<button class="teamButton">Modifica</button>
+            </div>
+        </div>';
+
+        return $html;
     }
 
 

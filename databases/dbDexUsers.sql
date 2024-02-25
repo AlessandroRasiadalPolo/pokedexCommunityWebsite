@@ -105945,15 +105945,14 @@ INSERT INTO `sopraffae` (`Id`, `TipoForte`, `TipoPokemon`) VALUES
 --
 
 CREATE TABLE `squadra` (
-  `NomeSquadra` varchar(100) NOT NULL
+  `NomeSquadra` varchar(100) NOT NULL,
+  Autore varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `squadra`
 --
 
-INSERT INTO `squadra` (`NomeSquadra`) VALUES
-('Za_Cringe94');
 
 -- --------------------------------------------------------
 

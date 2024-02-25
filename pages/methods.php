@@ -46,3 +46,6 @@ if($checkMove)
 $checkAbility = isset($_GET['checkAbility']) ? $_GET['checkAbility'] : "";
 if($checkAbility)
     echo DB::checkAbility($checkAbility, $queryPokemonName);
+$checkTeamName = isset($_GET['checkTeamName']) ? $_GET['checkTeamName'] : "";
+if($checkTeamName)
+    echo DB::checkTeamName($checkTeamName);

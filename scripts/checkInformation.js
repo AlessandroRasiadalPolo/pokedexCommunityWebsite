@@ -1,3 +1,17 @@
+function checkTeamName(nomeTeam){
+    var xmlhttp = new XMLHttpRequest();
+    let ris = false;
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            if(this.responseText === "true")
+                ris = true;
+        }
+    };
+
+    xmlhttp.open("GET", "../pages/methods.php?checkTeamName=" + nomeTeam, true);
+    xmlhttp.send();
+    return ris;
+}
 function checkPokemon(pokemons){
     let controllo = "";
     pokemons.forEach(function (pokemon){
