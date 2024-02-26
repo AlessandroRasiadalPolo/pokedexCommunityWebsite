@@ -370,9 +370,9 @@ class DB
             $result = $stmt->get_result();
         }
 
-        $sql = "SELECT P.PokemonName,P.Strumento, 
+        $sql = "SELECT P.PokemonName,P.Strumento, PK.PokedexId,
                 P.Abilità, P.Mossa1, P.Mossa2, P.Mossa3, P.Mossa4, P.PS, P.ATK, P.DEF, P.SATK, P.SDEF, P.SPE  
-                FROM Squadra S INNER JOIN PokemonSquadra P ON(S.NomeSquadra = P.TeamName) WHERE S.NomeSquadra = ?";
+                FROM Squadra S INNER JOIN PokemonSquadra P ON(S.NomeSquadra = P.TeamName) INNER JOIN Pokemon PK ON (P.PokemonName = PK.NomePokemon) WHERE S.NomeSquadra = ?";
 
 
         $stmt = $conn->prepare($sql);
@@ -391,6 +391,7 @@ class DB
                     if ($secondResult->num_rows > 0) {
                         while ($secondRow = $secondResult->fetch_assoc()) {
                             $pokemon = array(); // Inizializza un nuovo array per ogni Pokémon
+                            $pokemon['Id'] = $row['PokedexId'];
                             $pokemon['NomePokemon'] = $secondRow['PokemonName'];
                             $pokemon['Strumento'] = $secondRow['Strumento'];
                             $pokemon['Ability'] = $secondRow['Abilità'];

@@ -138,8 +138,8 @@ class UserBadge{
     public static function generateBadge($team)
     {
         $html = '<div class="userBadge">
-        <img src="" id="imgAnimation1-1" class="pokemonAnimation" alt="">
-        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/911.png" id="imgAnimation2-1" class="pokemonAnimation" alt="">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/' . $team['Pokemon'][0]['Id'] . '.png" id="imgAnimation1-1" class="pokemonAnimation" alt="">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/' . $team['Pokemon'][0]['Id'] . '.png" id="imgAnimation2-1" class="pokemonAnimation" alt="">
         <h2>' . $team['autore'].'s Card</h2>
         <img src="images/icon.png" alt="" class="imgBadge">
         <h3>'.$team['NomeTeam'].'</h3>
@@ -147,12 +147,12 @@ class UserBadge{
 
         foreach ($team['Pokemon'] as $pokemon) {
             $html .= '<div class="pokemonDescription">
-            <img src="' . $pokemon['spriteUrl'] . '" alt="" class="imgBadge">
+            <img src="https://www.smogon.com/dex/media/sprites/xy/' . $pokemon['NomePokemon'] . ".gif". '" alt="" class="imgBadge">
             <div>
                 <p>' . $pokemon['Mossa1'] . '</p>
                 <p>' . $pokemon['Mossa2'] . '</p>
+                <p>' . $pokemon['Mossa3'] . '</p>
                 <p>' . $pokemon['Mossa4'] . '</p>
-                <p>' . $pokemon['Mossa5'] . '</p>
             </div>
         </div>';
         }
