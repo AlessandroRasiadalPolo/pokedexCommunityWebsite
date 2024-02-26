@@ -135,76 +135,31 @@ class UserBadge{
         $this->pokemon4 = $pokemon4;
     }
 
-    public function generateBadge($pokemons)
+    public static function generateBadge($team)
     {
-        return '<div class = "userBadge">
-        <img src=""  id = "imgAnimation1-1" class = "pokemonAnimation" alt="">
-        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/911.png"  id = "imgAnimation2-1" class = "pokemonAnimation" alt ="">
-        <h2>Trainer\'s Card</h2>
-        <img src="images/icon.png" alt="" class = "imgBadge">
-        <h3>Team Name</h3>
-        <div class = "teamDiv">
-            <div class = "pokemonDescription">
-                <img src="https://www.smogon.com/dex/media/sprites/xy/scizor.gif" alt="" class = "imgBadge">
-                <div>
-                    <p>Mossa 1</p>
-                    <p>Mossa2</p>
-                    <p>Mossa 3</p>
-                    <p>Mossa4</p>
-                </div>
-            </div>
-            <div class = "pokemonDescription">
-                <img src="https://www.smogon.com/dex/media/sprites/xy/charizard.gif" alt="" class = "imgBadge">
-                <div>
-                    <p>Mossa 1</p>
-                    <p>Mossa2</p>
-                    <p>Mossa 3</p>
-                    <p>Mossa4</p>
-                </div>
-            </div>
-            <div class = "pokemonDescription">
-                <img src="https://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif"" alt="" class = "imgBadge">
-                <div>
-                    <p>Mossa 1</p>
-                    <p>Mossa2</p>
-                    <p>Mossa 3</p>
-                    <p>Mossa4</p>
-                </div>
-            </div>
-            <div class = "pokemonDescription">
-                <img src="https://www.smogon.com/dex/media/sprites/xy/kyurem.gif" alt="" class = "imgBadge">
-                <div>
-                    <p>Mossa 1</p>
-                    <p>Mossa2</p>
-                    <p>Mossa 3</p>
-                    <p>Mossa4</p>
-                </div>
-            </div>
-            <div class = "pokemonDescription">
-                <img src="https://www.smogon.com/dex/media/sprites/xy/kyurem-white.gif" alt="" class = "imgBadge">
-                <div>
-                    <p>Mossa 1</p>
-                    <p>Mossa2</p>
-                    <p>Mossa 3</p>
-                    <p>Mossa4</p>
-                </div>
-            </div>
-            <div class = "pokemonDescription">
-                <img src="https://www.smogon.com/dex/media/sprites/xy/kyurem-black.gif" alt="" class = "imgBadge">
-                <div>
-                    <p>Mossa 1</p>
-                    <p>Mossa2</p>
-                    <p>Mossa 3</p>
-                    <p>Mossa4</p>
-                </div>
-            </div>
+        $html = '<div class="userBadge">
+        <img src="" id="imgAnimation1-1" class="pokemonAnimation" alt="">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/911.png" id="imgAnimation2-1" class="pokemonAnimation" alt="">
+        <h2>' . $team['autore'].'s Card</h2>
+        <img src="images/icon.png" alt="" class="imgBadge">
+        <h3>'.$team['NomeTeam'].'</h3>
+        <div class="teamDiv">';
 
-        </div>
+        foreach ($team['Pokemon'] as $pokemon) {
+            $html .= '<div class="pokemonDescription">
+            <img src="' . $pokemon['spriteUrl'] . '" alt="" class="imgBadge">
+            <div>
+                <p>' . $pokemon['Mossa1'] . '</p>
+                <p>' . $pokemon['Mossa2'] . '</p>
+                <p>' . $pokemon['Mossa4'] . '</p>
+                <p>' . $pokemon['Mossa5'] . '</p>
+            </div>
+        </div>';
+        }
 
+        $html .= '</div></div>';
 
-    </div>';
-
-
+        return $html;
     }
 
     public static function generateTeam($team)

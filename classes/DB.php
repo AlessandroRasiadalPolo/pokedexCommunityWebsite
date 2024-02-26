@@ -358,15 +358,23 @@ class DB
     public static function getUserTeams($autore)
     {
         $conn = self::connection();
-        $sqlTeams = "SELECT NomeSquadra FROM Squadra WHERE Autore = ?";
+        if($autore == "all"){
+            $sqlTeams = "SELECT NomeSquadra, Autore FROM Squadra";
+            $result = $conn->query($sqlTeams);
+        }
+        else {
+            $sqlTeams = "SELECT NomeSquadra, Autore FROM Squadra WHERE Autore = ?";
+            $stmt = $conn->prepare($sqlTeams);
+            $stmt->bind_param("s", $autore);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        }
+
         $sql = "SELECT P.PokemonName,P.Strumento, 
                 P.Abilità, P.Mossa1, P.Mossa2, P.Mossa3, P.Mossa4, P.PS, P.ATK, P.DEF, P.SATK, P.SDEF, P.SPE  
                 FROM Squadra S INNER JOIN PokemonSquadra P ON(S.NomeSquadra = P.TeamName) WHERE S.NomeSquadra = ?";
 
-        $stmt = $conn->prepare($sqlTeams);
-        $stmt->bind_param("s", $autore);
-        $stmt->execute();
-        $result = $stmt->get_result();
+
         $stmt = $conn->prepare($sql);
         $teams = array();
 
@@ -376,6 +384,7 @@ class DB
             while ($row = $result->fetch_assoc()) {
                 $team = array(); // Inizializza un nuovo array $team ad ogni iterazione
                 $team['NomeSquadra'] = $row['NomeSquadra'];
+                $team['autore'] = $row['Autore'];
                 $stmt->bind_param("s", $row['NomeSquadra']);
                 if ($stmt->execute()) {
                     $secondResult = $stmt->get_result();

@@ -41,6 +41,15 @@
 
 <section id = "bodyPage">
 
+    <?php
+    include "classes/DB.php";
+    include "classes/UserBadge.php";
+
+        $teams = json_decode(\classes\DB::getUserTeams("all"), true);
+        foreach($teams as $team)
+            echo \classes\UserBadge::generateBadge($team);
+    ?>
+
     <div class = "userBadge">
         <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png"  id = "imgAnimation1-1" class = "pokemonAnimation" alt="">
         <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/911.png"  id = "imgAnimation2-1" class = "pokemonAnimation" alt ="">
