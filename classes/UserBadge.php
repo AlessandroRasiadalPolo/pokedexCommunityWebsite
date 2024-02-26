@@ -209,29 +209,27 @@ class UserBadge{
 
     public static function generateTeam($team)
     {
-        //Al posto di una grande stringa mi conviene concatenare i vari passaggi e dopo ritornarlo
-
+        // Inizializza l'HTML per il team
         $html = '<div class="teamDiv">
-            <h3 class="teamTitle">'. $team["NomeSquadra"] .'</h3>
-            <div class="members">';
+        <h3 class="teamTitle">' . $team["NomeSquadra"] . '</h3>
+        <div class="members">';
 
-        foreach ($team as $pokemonName) {
+        // Itera attraverso i Pokémon nel team
+        foreach ($team["Pokemon"] as $pokemon) {
             // Aggiungi il tag HTML per l'immagine del Pokémon
             $html .= '<div class="pokemonContainer">
-                <img src="../images/escaBallSprite.png" alt="" class="pokeball">
-                <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/' . $pokemonName . '.png" class="pokemon">
-            </div>';
+            <img src="../images/escaBallSprite.png" alt="" class="pokeball">
+            <img src="https://img.pokemondb.net/sprites/scarlet-violet/normal/' . $pokemon["NomePokemon"] . '.png" class="pokemon">
+        </div>';
         }
 
-        $html .= '<button class="teamButton">Modifica</button>
-            </div>
-        </div>';
+        // Chiudi il div per i membri del team e aggiungi il pulsante Modifica
+        $html .= '</div>
+        <button class="teamButton">Modifica</button>
+    </div>';
 
         return $html;
     }
-
-
-
 
 }
 

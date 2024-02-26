@@ -25,9 +25,11 @@
 <body>
 <header>
     <nav>
-        <h1>La sala d'onore della Community</h1>
+        <h1>La sala d onore della Community</h1>
 
         <?php
+        include '../classes/DB.php';
+        include "../classes/UserBadge.php";
 
         if (isset($_COOKIE['username'])) {
 
@@ -46,10 +48,12 @@
 
 <section id="bodyPage">
     <?php
+    $username = $_COOKIE['username'];
     //Mi servono tutti i team fatti dall'utente che sta usando il sito
-        $teams = json_decode(\classes\DB::getUserTeams($_COOKIE['username']), true);
-        foreach($teams as $team)
-            echo \classes\UserBadge::generateTeam($team);
+    $teams = json_decode(\classes\DB::getUserTeams($username), true);
+    foreach($teams as $team) {
+        echo classes\UserBadge::generateTeam($team);
+    }
     ?>
     <button id = "newTeamButton" onclick="changeToSelectedInterface()"><i class = "fas fa-plus-circle"></i>New Team</button>
 

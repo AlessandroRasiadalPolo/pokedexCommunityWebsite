@@ -285,9 +285,9 @@ class DB
     public static function saveTeam($nomeTeam, $pokemons)
     {
         $conn = self::connection();
-        $sqlSquadra = "INSERT INTO Squadra(NomeSquadra) VALUES (?)";
+        $sqlSquadra = "INSERT INTO Squadra(NomeSquadra, Autore) VALUES (?, ?)";
         $stmtSquadra = $conn->prepare($sqlSquadra);
-        $stmtSquadra->bind_param("s", $nomeTeam);
+        $stmtSquadra->bind_param("ss", $nomeTeam, $_COOKIE['username']);
 
         if ($stmtSquadra->execute()) {
             $sqlPokemon = "INSERT INTO PokemonSquadra(TeamName, PokemonName, Strumento, Abilità, Mossa1, Mossa2, Mossa3, Mossa4, PS, ATK, DEF, SATK, SDEF, SPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -358,20 +358,45 @@ class DB
     public static function getUserTeams($autore)
     {
         $conn = self::connection();
-        $sql = "SELECT S.NomeSquadra, P.* FROM Squadra S INNER JOIN PokemonSquadra P ON(S.NomeSquadra = P.TeamName) WHERE S.Autore = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $autore);
+        $sqlTeams = "SELECT NomeSquadra FROM Squadra WHERE Autore = ?";
+        $sql = "SELECT P.PokemonName,P.Strumento, 
+                P.Abilità, P.Mossa1, P.Mossa2, P.Mossa3, P.Mossa4, P.PS, P.ATK, P.DEF, P.SATK, P.SDEF, P.SPE  
+                FROM Squadra S INNER JOIN PokemonSquadra P ON(S.NomeSquadra = P.TeamName) WHERE S.NomeSquadra = ?";
 
+        $stmt = $conn->prepare($sqlTeams);
+        $stmt->bind_param("s", $autore);
         $stmt->execute();
         $result = $stmt->get_result();
+        $stmt = $conn->prepare($sql);
         $teams = array();
 
-        while ($row = $result->fetch_assoc()) {
-            $teamName = $row['NomeSquadra'];
-            unset($row['NomeSquadra']);
-            $teams[$teamName]['teamName'] = $teamName;
-            $teams[$teamName]['pokemon'][] = $row;
+
+        if($result->num_rows > 0)
+        {
+            while ($row = $result->fetch_assoc()) {
+                $team = array(); // Inizializza un nuovo array $team ad ogni iterazione
+                $team['NomeSquadra'] = $row['NomeSquadra'];
+                $stmt->bind_param("s", $row['NomeSquadra']);
+                if ($stmt->execute()) {
+                    $secondResult = $stmt->get_result();
+                    if ($secondResult->num_rows > 0) {
+                        while ($secondRow = $secondResult->fetch_assoc()) {
+                            $pokemon = array(); // Inizializza un nuovo array per ogni Pokémon
+                            $pokemon['NomePokemon'] = $secondRow['PokemonName'];
+                            $pokemon['Strumento'] = $secondRow['Strumento'];
+                            $pokemon['Ability'] = $secondRow['Abilità'];
+                            $pokemon['Mossa1'] = $secondRow['Mossa1'];
+                            $pokemon['Mossa2'] = $secondRow['Mossa2'];
+                            $pokemon['Mossa3'] = $secondRow['Mossa3'];
+                            $pokemon['Mossa4'] = $secondRow['Mossa4'];
+                            $team['Pokemon'][] = $pokemon; // Aggiungi il Pokémon all'array dei Pokémon del team
+                        }
+                    }
+                }
+                $teams[] = $team; // Aggiungi il team all'array dei teams
+            }
         }
+
 
         $stmt->close();
 
