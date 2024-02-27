@@ -139,10 +139,10 @@ class UserBadge{
     {
         $html = '<div class="userBadge">
         <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/' . $team['Pokemon'][0]['Id'] . '.png" id="imgAnimation1-1" class="pokemonAnimation" alt="">
-        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/' . $team['Pokemon'][0]['Id'] . '.png" id="imgAnimation2-1" class="pokemonAnimation" alt="">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/' . $team['Pokemon'][5]['Id'] . '.png" id="imgAnimation2-1" class="pokemonAnimation" alt="">
         <h2>' . $team['autore'].'s Card</h2>
         <img src="images/icon.png" alt="" class="imgBadge">
-        <h3>'.$team['NomeTeam'].'</h3>
+        <h3>'.$team['NomeSquadra'].'</h3>
         <div class="teamDiv">';
 
         foreach ($team['Pokemon'] as $pokemon) {
